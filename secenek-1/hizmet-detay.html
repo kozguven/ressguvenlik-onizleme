@@ -36,9 +36,10 @@
 <main id="icerik">
 
 <section class="sayfa-bas" style="min-height:min(78vh,760px)">
-  <img src="../assets/img/fabrika-guvenlik.jpg" alt="Akşamüstü fabrika kapısında görevli el feneriyle tır kontrol ediyor" loading="lazy" decoding="async">
+  <img src="../assets/img/fabrika-guvenlik.jpg" alt="Temsili fotoğraf: akşamüstü fabrika kapısında araç kontrolü" width="1500" height="1006" loading="eager" fetchpriority="high" decoding="async">
   <div class="kap">
     <p class="iz"><a href="index.html">Ana sayfa</a> / <a href="hizmetler.html">Hizmetler</a> / Fabrika ve sanayi</p>
+    <p class="onizleme-not">Önizlemede örnek olarak Fabrika ve Sanayi Tesisi Güvenliği hazırlandı; diğer hizmetler aynı düzeni kullanır.</p>
     <h1>Fabrika ve sanayi tesisi güvenliği</h1>
     <p>Kapıdan kantara, sevkiyattan gece devriyesine; üretimin durmadığı her saat için yazılı talimat, kayıtlı tur ve sabah raporu.</p>
     <div class="dugmeler" style="margin-top:28px"><a class="dugme dugme-ana" href="teklif.html">Fabrikam için teklif iste</a><a class="dugme dugme-cizgi" href="#kadro">Örnek kadroyu gör</a></div>
@@ -67,7 +68,7 @@
       <li><span class="no">2</span><h3>Risk değerlendirmesi</h3><p>Riskler belirlenir, olasılık ve etkiye göre derecelendirilir.</p></li>
       <li><span class="no">3</span><h3>Çözümler</h3><p>Önleyici tedbir, doğrulama ve müdahale adımları görev talimatına yazılır.</p></li>
       <li><span class="no">4</span><h3>Uygulama</h3><p>Kadro yerleşir; devriye güzergâhı ve vardiya planı tesise göre ayarlanır.</p></li>
-      <li><span class="no">5</span><h3>Kalite kontrol</h3><p>Habersiz denetim, tatbikat, aylık KPI ve sözleşmedeki hizmet seviyesi takibi.</p></li>
+      <li><span class="no">5</span><h3>Kalite kontrol</h3><p>Denetim, tatbikat, KPI ve sözleşmedeki hizmet seviyesi (SLA) takibi.</p></li>
     </ol>
   </div>
 </section>
@@ -98,25 +99,26 @@
       </ul>
       <p style="margin-top:24px"><a href="musteri-portali.html">Örnek müşteri panelini açın</a></p>
     </div>
-    <figure><img src="../assets/img/dijital-nobet-nfc.jpg" alt="Görevli gece devriyesinde telefonunu NFC kontrol noktasına okutuyor" loading="lazy" decoding="async"></figure>
+    <figure><img src="../assets/img/dijital-nobet-nfc.jpg" alt="Temsili fotoğraf: gece devriyesinde NFC kontrol noktası okutma" width="1500" height="1006" loading="lazy" decoding="async"></figure>
   </div>
 </section>
 
-<section class="bolum" id="kadro" style="background:var(--yuzey)">
+<section class="bolum yuzey" id="kadro">
   <div class="kap">
-    <div class="bas-iki"><h2>Örnek kadro: 3 noktalı fabrika</h2><p>Gebze'de üç noktası olan örnek bir üretim tesisi. Hesap, haftalık 45 saatlik yasal çalışma süresi ile izin ve resmî tatil payına göre yapılır.</p></div>
+    <div class="bas-iki"><h2>Örnek kadro: 2 noktalı fabrika</h2><p>Ana kapısı ve çevre devriyesi 7/24 tutulan örnek bir üretim tesisi. Görevli = nokta × haftalık açık saat ÷ 45 × 1,12 (izin, rapor ve resmî tatil payı).</p></div>
     <div class="tablo-sar">
     <table>
       <thead><tr><th>Nokta</th><th>Çalışma saatleri</th><th class="sayi">Haftalık saat</th><th class="sayi">Görevli</th></tr></thead>
       <tbody>
-        <tr><td>Ana kapı ve kantar</td><td>7/24</td><td class="sayi">168</td><td class="sayi">4,2</td></tr>
-        <tr><td>Sevkiyat rampası</td><td>Hafta içi 08:00–18:00</td><td class="sayi">50</td><td class="sayi">1,3</td></tr>
-        <tr><td>Çevre devriyesi</td><td>Her gece 18:00–08:00</td><td class="sayi">98</td><td class="sayi">2,5</td></tr>
+        <tr><td>Ana kapı ve kantar</td><td>7/24</td><td class="sayi">168</td><td class="sayi">4,18</td></tr>
+        <tr><td>Çevre devriyesi</td><td>7/24</td><td class="sayi">168</td><td class="sayi">4,18</td></tr>
+        <tr><td colspan="3">Toplam: 8,36, yukarı yuvarlanır</td><td class="sayi">9</td></tr>
+        <tr><td colspan="3">Vardiya amiri (7/24 hizmette 6 ve üzeri görevli)</td><td class="sayi">1</td></tr>
       </tbody>
-      <tfoot><tr><td colspan="3">Önerilen kadro: 8 görevli + 1 vardiya amiri</td><td class="sayi">9</td></tr></tfoot>
+      <tfoot><tr><td colspan="3">Önerilen kadro: 9 görevli + 1 vardiya amiri</td><td class="sayi">10</td></tr></tfoot>
     </table>
     </div>
-    <p class="ikincil" style="margin-top:16px;font-size:.95rem">Kendi tesisiniz için hesap: <a href="teklif.html">teklif sihirbazı</a>. Kesin kadro keşiften sonra netleşir.</p>
+    <p class="ikincil" style="margin-top:16px;font-size:.95rem">45 saat: İş Kanunu'na göre haftalık en çok çalışma süresi. Kesin kadro keşiften sonra belirlenir. Kendi tesisiniz için: <a href="teklif.html">teklif sihirbazı</a>.</p>
   </div>
 </section>
 
@@ -128,17 +130,17 @@
     </blockquote>
     <div class="sss">
       <h2 style="font-size:2.4rem;margin-bottom:16px">Sık sorulanlar</h2>
-      <details><summary>Silahlı görevli gerekir mi?</summary><p>Çoğu fabrikada silahsız görevli yeterlidir. Değerli hammadde, patlayıcı ya da yüksek nakit varsa silahlı görevli önerilir; bu, valilik izni gerektirir ve izin sürecini biz yürütürüz.</p></details>
+      <details><summary>Silahlı görevli gerekir mi?</summary><p>Çoğu fabrikada silahsız görevli yeterlidir. Değerli hammadde, patlayıcı ya da yüksek nakit varsa silahlı görevli önerilir; bu, valilik izni gerektirir.</p></details>
       <details><summary>Mevcut kamera sistemimizle çalışabilir misiniz?</summary><p>Evet. Keşifte kamera açılarını ve kayıt süresini kontrol ediyor, kör noktaları rapora yazıyoruz. Yeni kamera kurulumu gerekirse Ress Group teknik ekibi teklif verir.</p></details>
       <details><summary>Görevli değişirse nasıl haberim olur?</summary><p>Her değişiklik müşteri portalında görünür; yeni görevli tesis eğitimini almadan nöbete başlamaz. Hesap yöneticiniz değişikliği ayrıca bildirir.</p></details>
-      <details><summary>Ne kadar sürede başlarsınız?</summary><p>Başlangıç tarihi keşif ve kadro büyüklüğüne göre sözleşmede yazılır. Tarihi bölge müdürlüğümüz keşiften sonra sizinle birlikte belirler.</p></details>
+      <details><summary>Ne kadar sürede başlarsınız?</summary><p>Acil ihtiyaçta 24–48 saat içinde personel sağlanır. Planlı başlangıç tarihi keşiften sonra sözleşmede yazılır.</p></details>
     </div>
   </div>
 </section>
 
 <section class="cagri bolum-dar">
   <div class="kap cagri-ic">
-    <div><h2>Fabrikanızı yerinde görelim</h2><p style="margin-top:16px">Keşif ücretsizdir. Bölge müdürlüğümüz sizi arar, uygun bir gün belirlenir.</p></div>
+    <div><h2>Fabrikanızı yerinde görelim</h2><p style="margin-top:16px">Keşif günü için bölge müdürlüğümüzle görüşün.</p></div>
     <div class="dugmeler"><a class="dugme dugme-acik" href="teklif.html">Keşif ve teklif iste</a></div>
   </div>
 </section>

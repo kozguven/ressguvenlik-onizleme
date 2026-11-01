@@ -466,6 +466,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .ozet dt{color:var(--metin-2)}
 .ozet dd{margin:0;text-align:right}
 .kadro-sayi{font-family:var(--baslik);font-weight:800;font-size:4.6rem;line-height:1;margin:18px 0 4px}
+.ozet .kadro-sayi{font-size:3rem}
 .kadro-liste{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
 .kadro-liste li{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--zemin);border:1px solid var(--cizgi)}
 .kadro-liste li span:last-child{font-family:var(--veri)}
@@ -626,3 +627,49 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   .alt-bilgi .kap{padding:0 16px}
   .tam-genislik{margin-left:-16px;margin-right:-16px}
 }
+
+/* Astra düzeltmeleri */
+.yuzey{background:var(--yuzey)}
+.yuzey-acik{background:#221F1F}
+figure img,.tesis img,.hizmet img,.sayfa-bas>img,.grup-ic>img,.panorama img,.portre img{background:var(--yuzey)}
+.onizleme-not{display:block;margin-top:8px;font-size:.86rem;line-height:1.45;color:#CFC9C4}
+.sayfa-bas .onizleme-not{display:inline-block;margin:0 0 14px;padding:8px 12px;background:rgba(15,14,14,.82);color:var(--metin)}
+.msj .onizleme-not{color:#D3CDC8;font-size:.82rem}
+.tost{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:70;max-width:min(460px,calc(100vw - 32px));padding:12px 16px;background:var(--metin);color:var(--zemin);font-size:.94rem;line-height:1.45;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.tost[hidden]{display:none}
+
+/* Mini kadro bandı */
+.mini-kadro{background:var(--yuzey);border-bottom:1px solid var(--cizgi);padding-top:40px;padding-bottom:40px}
+.mini-ic{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:32px;align-items:center}
+.mini-kadro h2{font-size:clamp(2rem,3vw,2.8rem)}
+.mini-not{margin:10px 0 0;font-size:.9rem;color:var(--metin-2);max-width:46ch}
+.mini-form{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr) auto auto;gap:16px;align-items:end}
+.mini-sonuc{margin:0;min-height:50px;display:flex;align-items:center;gap:8px;font-size:1.05rem;white-space:nowrap}
+.mini-sonuc strong{font-family:var(--baslik);font-weight:800;font-size:1.9rem;line-height:1}
+@media (max-width:1100px){.mini-ic{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  .mini-kadro{padding-top:28px;padding-bottom:28px}
+  .mini-form{grid-template-columns:minmax(0,90px) minmax(0,1fr)}
+  .mini-sonuc{grid-column:1 / -1;min-height:0}
+  .mini-form .dugme{grid-column:1 / -1}
+}
+
+/* 24 saat: özet + açılır ayrıntı */
+.an-ozet{color:var(--metin)!important;margin-bottom:8px}
+.an-detay summary{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;color:#CFC9C4;text-decoration:underline;text-decoration-color:var(--bordo-acik);text-underline-offset:4px}
+.an-detay p{margin-top:4px}
+.nobet.sahne .an-detay summary{display:none}
+@media (max-width:959px){
+  .anlar{gap:0}
+  .an{gap:14px;padding:22px 0;border-top:1px solid var(--cizgi)}
+  .an:first-child{border-top:0}
+  .an-ikincil{display:none}
+  .an figure{aspect-ratio:16/9}
+  .an .telefon-rapor{padding:18px 0}
+  .an-metin{display:grid;grid-template-columns:4.4rem minmax(0,1fr);gap:12px;align-items:start}
+  .an-saat{font-size:1.3rem;margin:3px 0 0}
+  .an h3{font-size:1.5rem;margin-bottom:6px}
+  .an p{margin-bottom:4px}
+  .an .kayit{font-size:.82rem}
+}
+@media (max-width:959px){.an .tel-kasa{width:min(250px,80%);font-size:.86rem}}

@@ -17,68 +17,62 @@
   <div class="kap">
     <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>Referanslar</li></ol>
     <h1>Bizi müşterilerimizden dinleyin</h1>
-    <p>150’den fazla kurumsal müşteriden bazıları. Yorumlar, yazan kişinin unvanıyla yayımlanır.</p>
+    <p>150’den fazla kurumsal müşteriden bazıları ve mevcut sitemizdeki yorumları.</p>
   </div>
 </section>
 
 <section class="bolum" style="padding-top:40px">
   <div class="kap">
-    <ul class="kurumlar" aria-label="Referans kurumlar" style="margin-bottom:36px">
-      <li>Kim Market</li><li>Onur Market</li><li>Kolan Hastaneleri</li><li>Medilife</li><li>Kaya Holding</li><li>Ege Yapı</li><li>Turkeyana</li>
-    </ul>
+    <div class="ref-ic" style="margin-bottom:48px;align-items:start">
+      <div>
+        <h2>Referans kurumlar</h2>
+        <p class="ikincil">Kurum adları ve şube bilgileri mevcut sitemizdeki referans listesinden alınmıştır.</p>
+      </div>
+      <ul class="ref-liste" aria-label="Referans kurumlar">
+        <li><strong>Kim Market</strong><span>150 şube</span></li>
+        <li><strong>Onur Market</strong><span>40 şube</span></li>
+        <li><strong>Kolan Hastaneleri</strong><span>Büyükçekmece ve Silivri</span></li>
+        <li><strong>Medilife</strong></li>
+        <li><strong>Kaya Holding</strong></li>
+        <li><strong>Ege Yapı</strong></li>
+        <li><strong>Turkeyana</strong></li>
+      </ul>
+    </div>
 
-    <div class="cipler" id="refCip" role="group" aria-label="Sektör süzgeci">
+    <h2>Müşterilerimiz ne diyor</h2>
+    <div class="cipler" id="refCip" role="group" aria-label="Sektör süzgeci" style="margin-top:16px">
       <button class="cip" type="button" data-s="tum" aria-pressed="true">Tümü</button>
       <button class="cip" type="button" data-s="perakende" aria-pressed="false">Perakende</button>
       <button class="cip" type="button" data-s="saglik" aria-pressed="false">Sağlık</button>
       <button class="cip" type="button" data-s="insaat" aria-pressed="false">İnşaat ve yapı</button>
     </div>
-
-    <article class="kart" data-ref="saglik" style="margin-bottom:16px">
-      <div class="iki-sutun" style="gap:24px">
-        <div>
-          <span class="ornek-rozet">Vaka özeti</span>
-          <h2 style="margin-top:12px">Kolan Hastaneleri: 2 hastane, ara destek</h2>
-          <p class="ikincil">Büyükçekmece ve Silivri hastanelerinde güvenlik ve ara destek hizmeti. Acil servis girişi, hasta yakını yönlendirme ve gece devriyesi aynı ekip tarafından yürütülür.</p>
-          <dl class="deger-liste" style="margin-top:8px">
-            <div><dt>İhtiyaç</dt><dd>İki hastanede tek standart, acil serviste sakin ve hızlı müdahale.</dd></div>
-            <div><dt>Çözüm</dt><dd>Kadın ve erkek görevlilerden karma ekip, hastaneye özel davranış eğitimi, NFC’li gece devriyesi.</dd></div>
-            <div><dt>Raporlama</dt><dd>İki hastane aynı portalda; olay kayıtları hastane bazında ayrılır.</dd></div>
-          </dl>
-        </div>
-        <div>
-          <div class="foto-kare" style="aspect-ratio:3/2;margin-bottom:16px"><img src="../assets/img/hastane-guvenlik.jpg" alt="Hastane girişinde Ress güvenlik görevlisi" loading="lazy"></div>
-          <figure class="alinti" style="border:0;padding:0">
-            <blockquote>“Kolan Büyükçekmece ve Kolan Silivri hastanelerinde vermiş olduğunuz ara destek hizmet çözüm ortaklığımızdan gayet memnunuz.”</blockquote>
-            <figcaption><strong>Adil Kalyoncu</strong>Kolan, Destek Hizmetleri Grup Müdürü</figcaption>
-          </figure>
-        </div>
-      </div>
-    </article>
-
-    <div class="iki-sutun" style="gap:16px">
-      <figure class="alinti" data-ref="perakende">
+    <div style="border-top:1px solid var(--cizgi)">
+      <figure class="alinti-satir" data-ref="perakende" style="margin:0">
+        <figcaption class="kim"><strong>Sinan Ersan</strong><span>Kim Market, CEO</span></figcaption>
         <blockquote>“Türkiye geneli 150 şubemizde verdiğiniz temizlik ve güvenlik hizmetleri noktasında çözüm ortaklığımız olduğundan dolayı gayet memnunuz.”</blockquote>
-        <figcaption><strong>Sinan Ersan</strong>Kim Market, CEO</figcaption>
       </figure>
-      <figure class="alinti" data-ref="perakende">
+      <figure class="alinti-satir" data-ref="perakende" style="margin:0">
+        <figcaption class="kim"><strong>Caner Doğan</strong><span>Onur Market, CEO</span></figcaption>
         <blockquote>“Onur marketlerinde 40 şubemizde vermiş olduğunuz temizlik ve güvenlik hizmetlerinden dolayı teşekkür ederim.”</blockquote>
-        <figcaption><strong>Caner Doğan</strong>Onur Market, CEO</figcaption>
       </figure>
-      <figure class="alinti" data-ref="saglik">
+      <figure class="alinti-satir" data-ref="saglik" style="margin:0">
+        <figcaption class="kim"><strong>Adil Kalyoncu</strong><span>Kolan, Destek Hizmetleri Grup Müdürü</span></figcaption>
+        <blockquote>“Kolan Büyükçekmece ve Kolan Silivri hastanelerinde vermiş olduğunuz ara destek hizmet çözüm ortaklığımızdan gayet memnunuz.”</blockquote>
+      </figure>
+      <figure class="alinti-satir" data-ref="saglik" style="margin:0">
+        <figcaption class="kim"><strong>Gülay Avcı</strong><span>Medilife, Finans Koordinatörü</span></figcaption>
         <blockquote>“Birçok firmayı denedikten sonra Ress ile istediğimiz sonuçları aldık. Sağlık sektöründeki tecrübelerinizi bizlere de yansıttığınız için teşekkür ederiz.”</blockquote>
-        <figcaption><strong>Gülay Avcı</strong>Medilife, Finans Koordinatörü</figcaption>
       </figure>
-      <figure class="alinti" data-ref="insaat">
+      <figure class="alinti-satir" data-ref="insaat" style="margin:0">
+        <figcaption class="kim"><strong>Yaşar Sevgi</strong><span>Ege Yapı, Destek Hizmetleri Merkezi Müdürü</span></figcaption>
         <blockquote>“Türkiye geneli yaptığımız tüm projelerde geniş iş ağı ve bölge müdürlükleri bulunmasından dolayı çalışmaktan çok mutluyuz.”</blockquote>
-        <figcaption><strong>Yaşar Sevgi</strong>Ege Yapı, Destek Hizmetleri Merkezi Müdürü</figcaption>
       </figure>
     </div>
 
-    <div class="teklif-giris" style="margin-top:40px;grid-template-columns:1fr">
-      <h2 style="margin:0">Referans görüşmesi isteyin</h2>
-      <p style="margin:0">Benzer tesise sahip bir müşterimizle, onların izniyle görüşmenizi ayarlayabiliriz.</p>
-      <div><a class="dug dug-acik" href="iletisim.html">Görüşme talep et</a></div>
+    <div class="teklif-giris" style="margin-top:48px;grid-template-columns:1fr">
+      <h2 style="margin:0">Tesisiniz için kadro önerisi alın</h2>
+      <p style="margin:0">Teklif sihirbazı ihtiyacınızı sorar, önerilen kadroyu gösterir; bölge müdürlüğümüz keşif için sizinle iletişime geçer.</p>
+      <div><a class="dug dug-acik" href="teklif.html">Teklif sihirbazını aç</a></div>
     </div>
   </div>
 </section>

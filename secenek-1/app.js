@@ -11,6 +11,44 @@
     sohbet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>'
   };
 
+  /* Ortak kadro hesabı (üç seçenekte aynı):
+     görevli = nokta × haftalık açık saat ÷ 45 × 1,12, yukarı yuvarlanır;
+     7/24 hizmette toplam görevli 6 ve üzeriyse +1 vardiya amiri. */
+  var KADRO_SAAT = { "7/24": 168, "gunduz": 84, "gece": 84, "haftasonu": 48 };
+  function kadroHesap(nokta, tur) {
+    var hafta = KADRO_SAAT[tur] || 168;
+    var ham = nokta * hafta / 45 * 1.12;
+    var gorevli = Math.ceil(ham - 1e-9);
+    return { hafta: hafta, ham: ham, gorevli: gorevli, amir: (tur === "7/24" && gorevli >= 6) ? 1 : 0 };
+  }
+  function virgul(x) { return x.toFixed(1).replace(".", ","); }
+
+  /* Önizleme notu (işlevsiz bağlantılar) */
+  var NOTLAR = { "#kvkk": "Önizleme: KVKK aydınlatma metni yayından önce Ress ile birlikte eklenecek.", "#cerez": "Önizleme: çerez politikası yayından önce eklenecek.", "#rapor": "Önizleme: örnek dosya yok. Gerçek portalda PDF bu bağlantıdan iner." };
+  var tost = document.createElement("div"); tost.className = "tost"; tost.setAttribute("role", "status"); tost.hidden = true;
+  document.body.appendChild(tost);
+  var tostSure;
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a"); if (!a) return;
+    var not = a.dataset.onizleme || NOTLAR[a.getAttribute("href")];
+    if (!not) return;
+    e.preventDefault();
+    tost.textContent = not; tost.hidden = false;
+    clearTimeout(tostSure); tostSure = setTimeout(function () { tost.hidden = true; }, 4500);
+  });
+
+  /* Ana sayfa mini kadro hesabı */
+  var mk = document.getElementById("mini-kadro");
+  if (mk) {
+    var mkGuncelle = function () {
+      var n = Math.max(1, Math.min(40, parseInt(mk.querySelector("#mk-nokta").value, 10) || 1));
+      var k = kadroHesap(n, mk.querySelector("#mk-saat").value);
+      mk.querySelector("#mk-ham").textContent = virgul(k.ham);
+      mk.querySelector("#mk-sonuc").textContent = k.gorevli + " görevli" + (k.amir ? " + 1 vardiya amiri" : "");
+    };
+    mk.addEventListener("input", mkGuncelle); mk.addEventListener("change", mkGuncelle); mkGuncelle();
+  }
+
   /* Mobil menü */
   var menu = document.getElementById("mobil-menu");
   var menuAc = document.querySelector(".menu-ac");
@@ -105,6 +143,7 @@
     function mod() {
       var ac = genis.matches;
       nobet.classList.toggle("sahne", ac);
+      nobet.querySelectorAll(".an-detay").forEach(function (d) { d.open = ac; });
       if (ac && kare && !kare.children.length) sahneKur();
       if (ac) { etkin = -1; kaydir(); }
       else { anlar.forEach(function (a) { a.classList.remove("etkin"); }); }
@@ -171,8 +210,7 @@
     var adimlar = [].slice.call(sb.querySelectorAll(".adim"));
     var ilerleme = [].slice.call(document.querySelectorAll(".ilerleme li"));
     var simdi = 0;
-    var SAAT = { "7/24": 168, "gunduz": 50, "gece": 98, "haftasonu": 48 };
-    var SAAT_AD = { "7/24": "7/24", "gunduz": "Hafta içi gündüz (08–18)", "gece": "Her gece (18–08)", "haftasonu": "Hafta sonu tam gün" };
+    var SAAT_AD = { "7/24": "7/24", "gunduz": "Gündüz (08–20)", "gece": "Gece (20–08)", "haftasonu": "Yalnız hafta sonu" };
     var MODEL = {
       "Fabrika / sanayi tesisi": "Kapı ve kantar kontrolü, çevre devriyesi, NFC kontrol noktalı gece turu",
       "Plaza / iş merkezi": "Resepsiyon ve ziyaretçi kaydı, otopark kontrolü, mesai dışı kat devriyesi",
@@ -188,15 +226,12 @@
     function hesap() {
       var nokta = Math.max(1, Math.min(40, parseInt(sb.querySelector("#nokta").value, 10) || 1));
       var saatTur = deger("saat") || "7/24";
-      var hafta = SAAT[saatTur];
-      var ham = nokta * hafta / 45 * 1.125;
-      var gorevli = Math.ceil(ham - 0.05);
-      var amir = gorevli >= 8 ? Math.max(1, Math.round(gorevli / 12)) : 0;
+      var k = kadroHesap(nokta, saatTur);
+      var hafta = k.hafta, ham = k.ham, gorevli = k.gorevli, amir = k.amir;
       var ekler = [].map.call(sb.querySelectorAll('[name="ek"]:checked'), function (e) { return e.value; });
       return { nokta: nokta, saatTur: saatTur, hafta: hafta, ham: ham, gorevli: gorevli, amir: amir, ekler: ekler,
         tesis: deger("tesis"), il: (sb.querySelector("#il").value || ""), ilce: (sb.querySelector("#ilce").value || ""), silah: deger("silah") || "Silahsız" };
     }
-    function virgul(x) { return x.toFixed(1).replace(".", ","); }
     function ozetYaz() {
       var h = hesap();
       var o = document.getElementById("ozet-dl");
@@ -207,7 +242,7 @@
         '<div><dt>Çalışma</dt><dd>' + SAAT_AD[h.saatTur] + '</dd></div>' +
         '<div><dt>Yetki</dt><dd>' + h.silah + '</dd></div>' +
         '<div><dt>Ek ihtiyaç</dt><dd>' + (h.ekler.length ? h.ekler.join(", ") : "Yok") + '</dd></div>';
-      document.getElementById("ozet-sayi").textContent = h.gorevli + (h.amir ? " + " + h.amir : "");
+      document.getElementById("ozet-sayi").textContent = virgul(h.ham) + " → " + h.gorevli + (h.amir ? " + " + h.amir : "");
       document.getElementById("ozet-sayi-ac").textContent = h.amir ? "görevli + vardiya amiri" : "görevli önerilir";
       // Sonuç adımı
       var s = document.getElementById("sonuc-kadro");
@@ -220,8 +255,9 @@
         s.innerHTML = satir;
         document.getElementById("sonuc-sayi").textContent = (h.gorevli + h.amir);
         document.getElementById("sonuc-hesap").textContent =
-          h.nokta + " nokta × haftada " + h.hafta + " saat = " + (h.nokta * h.hafta) + " saat. Bir görevli haftada en fazla 45 saat çalışır; izin ve resmî tatil payıyla nokta başına " +
-          virgul(h.hafta / 45 * 1.125) + " görevli gerekir. Toplam " + virgul(h.ham) + ", yukarı yuvarlanınca " + h.gorevli + " görevli.";
+          h.nokta + " nokta × haftada " + h.hafta + " saat ÷ 45 × 1,12 = " + virgul(h.ham) + " → " + h.gorevli + " görevli" +
+          (h.amir ? "; 7/24 hizmette 6 ve üzeri görevli olduğu için +1 vardiya amiri." : ".") +
+          " 45 saat: İş Kanunu'na göre haftalık en çok çalışma süresi; 1,12 izin, rapor ve resmî tatil payıdır. Kesin kadro keşiften sonra belirlenir.";
         document.getElementById("sonuc-model").textContent = MODEL[h.tesis] || "Giriş kontrolü, ziyaretçi kaydı, devriye ve olay tutanağı; ayrıntı keşifte netleşir.";
       }
     }
@@ -262,11 +298,13 @@
     });
     sb.addEventListener("input", ozetYaz);
     var ad = parseInt(params.get("adim"), 10);
+    if (params.get("nokta")) sb.querySelector("#nokta").value = Math.max(1, Math.min(40, parseInt(params.get("nokta"), 10) || 1));
+    var ps = params.get("saat"), pr = ps && sb.querySelector('[name="saat"][value="' + ps + '"]'); if (pr) pr.checked = true;
     if (ad >= 2) {
       // Önizleme: örnek seçimlerle ilgili adımı aç
       var t = sb.querySelector('[name="tesis"][value="Fabrika / sanayi tesisi"]'); if (t) t.checked = true;
       sb.querySelector("#il").value = "Kocaeli"; sb.querySelector("#ilce").value = "Gebze";
-      sb.querySelector("#nokta").value = 3;
+      if (!params.get("nokta")) sb.querySelector("#nokta").value = 2;
     }
     goster(isNaN(ad) ? 0 : ad - 1);
   }
@@ -296,7 +334,8 @@
       s: [["Güvenlik teklifi istiyorum", "teklif"], ["İş başvurusu yapmak istiyorum", "is"], ["En yakın bölge müdürlüğü", "bolge"], ["Şikâyet / öneri", "sikayet"]] },
     teklif: { m: "Hangi tesis için güvenlik düşünüyorsunuz?", s: [["Fabrika veya depo", "teklif2"], ["Plaza veya ofis", "teklif2"], ["Site veya rezidans", "teklif2"], ["Başka bir tesis", "teklif2"]] },
     teklif2: { m: "Tesis hangi ilde?", s: [["İstanbul", "teklif3"], ["Kocaeli", "teklif3"], ["Başka bir il", "teklif3"]] },
-    teklif3: { m: 'Talebinizi ilgili bölge müdürlüğüne ilettim. Kayıt numaranız: <span class="veri">RS-2026-0418</span>. Fiyat ve başlangıç tarihini keşiften sonra bölge müdürlüğümüz paylaşır. Önerilen kadroyu şimdi görmek isterseniz <a href="teklif.html">teklif sihirbazını açın</a>.', s: [["Başka bir konu", "bas"]] },
+    teklif3: { m: "Talebi bölge müdürlüğüne iletebilmem için adınızı ve telefon numaranızı yazar mısınız?", iletisim: "teklif4", s: [["Örnek bilgilerle devam et", "teklif4", "Ahmet Yılmaz, 0532 000 00 00"]] },
+    teklif4: { m: 'Teşekkürler. Talebinizi ilgili bölge müdürlüğüne ilettim; kayıt numaranız <span class="veri">RS-2026-0418</span>. Fiyat ve başlangıç tarihini keşiften sonra bölge müdürlüğümüz paylaşır. Önerilen kadroyu şimdi görmek için <a href="teklif.html">teklif sihirbazını açın</a>.<span class="onizleme-not">Önizleme: gerçek talep oluşturulmadı.</span>', s: [["Başka bir konu", "bas"]] },
     is: { m: "Geçerli bir Özel Güvenlik Kimlik Kartınız (ÖGKK) var mı?", s: [["Evet, kartım var", "is2"], ["Hayır, yok", "is3"]] },
     is2: { m: 'Başvurunuzu <a href="kariyer.html#basvuru">kariyer sayfasındaki formdan</a> yapabilirsiniz; kart geçerlilik tarihinizi yazmayı unutmayın. Başvurular, oturduğunuz ile en yakın bölge müdürlüğünde değerlendirilir.', s: [["Açık pozisyonlar", "is4"], ["Başka bir konu", "bas"]] },
     is3: { m: "Görev alabilmek için ÖGKK şarttır. Kartı, yetkili bir özel güvenlik eğitim kurumunda temel eğitimi ve sınavı tamamladıktan sonra alırsınız. Kartınız çıktığında başvurunuzu bekleriz.", s: [["Yine de bilgilerimi bırakmak istiyorum", "is2"], ["Başka bir konu", "bas"]] },
@@ -308,7 +347,8 @@
     "bolge-ege": { m: "Size en yakın birim Ege Bölge Müdürlüğümüz (İzmir). Telefon: 0850 888 73 77.", s: [["Başka bir konu", "bas"]] },
     "bolge-diger": { m: 'Sekiz bölge müdürlüğümüzün hangisine bağlı olduğunuzu <a href="bolgeler.html">bölge haritasında</a> görebilirsiniz.', s: [["Başka bir konu", "bas"]] },
     sikayet: { m: "Konu hangisi?", s: [["Görevli ile ilgili", "sikayet2"], ["Hizmet düzeni", "sikayet2"], ["Öneri", "sikayet2"]] },
-    sikayet2: { m: 'Kaydınızı açtım: <span class="veri">SK-2026-0093</span>. Kalite ve Denetim Koordinatörlüğümüz kaydı inceleyip sizi arayacak. Ayrıntı eklemek isterseniz <a href="iletisim.html">iletişim formunu</a> kullanabilirsiniz.', s: [["Başka bir konu", "bas"]] }
+    sikayet2: { m: "Size dönüş yapabilmemiz için adınızı ve telefon numaranızı yazar mısınız?", iletisim: "sikayet3", s: [["Örnek bilgilerle devam et", "sikayet3", "Ahmet Yılmaz, 0532 000 00 00"]] },
+    sikayet3: { m: 'Kaydınızı açtım: <span class="veri">SK-2026-0093</span>. Kalite ve Denetim Koordinatörlüğümüz kaydı inceleyip sizi arayacak. Ayrıntı eklemek isterseniz <a href="iletisim.html">iletişim formunu</a> kullanabilirsiniz.<span class="onizleme-not">Önizleme: gerçek kayıt oluşturulmadı.</span>', s: [["Başka bir konu", "bas"]] }
   };
   var asBtn = document.createElement("button");
   asBtn.className = "asistan-dugme"; asBtn.type = "button";
@@ -324,11 +364,14 @@
   document.body.appendChild(as); document.body.appendChild(asBtn);
   var akis = as.querySelector(".asistan-akis"), hazir = as.querySelector(".hazir");
   function msj(metin, kim) { var d = document.createElement("div"); d.className = "msj msj-" + kim; d.innerHTML = metin; akis.appendChild(d); akis.scrollTop = akis.scrollHeight; }
+  var bekleyen = null;
   function dugum(ad) {
     var n = AKIS[ad]; msj(n.m, "bot"); hazir.innerHTML = "";
+    bekleyen = n.iletisim || null;
+    as.querySelector("#asistan-girdi").placeholder = bekleyen ? "Ad soyad, telefon" : "Sorunuzu yazın";
     n.s.forEach(function (s) {
       var b = document.createElement("button"); b.type = "button"; b.textContent = s[0];
-      b.addEventListener("click", function () { msj(s[0], "sen"); dugum(s[1]); });
+      b.addEventListener("click", function () { msj(s[2] || s[0], "sen"); dugum(s[1]); });
       hazir.appendChild(b);
     });
   }
@@ -342,6 +385,7 @@
   as.querySelector("form").addEventListener("submit", function (e) {
     e.preventDefault(); var i = as.querySelector("input"); if (!i.value.trim()) return;
     msj(i.value.replace(/</g, "&lt;"), "sen"); i.value = "";
+    if (bekleyen) { dugum(bekleyen); return; }
     msj("Bu önizlemede yazılı soruları yanıtlamıyorum. Aşağıdaki seçeneklerden birini seçebilir ya da 0850 888 73 77'yi arayabilirsiniz.", "bot");
   });
   if (params.get("asistan") === "1") {

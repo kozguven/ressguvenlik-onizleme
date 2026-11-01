@@ -50,6 +50,7 @@
         <button class="dugme dugme-ana" type="button" id="kod-iste">SMS kodu gönder</button>
         <div id="kod-adim" hidden>
           <fieldset class="alan"><legend>Telefonunuza gelen 6 haneli kod</legend>
+            <p class="onizleme-not" style="margin:0 0 6px">Önizleme: SMS gönderilmedi; herhangi bir kod yazıp giriş yapın.</p>
             <div class="kod-alan"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 1"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 2"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 3"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 4"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 5"><input type="text" inputmode="numeric" maxlength="1" aria-label="Kod hanesi 6"></div>
           </fieldset>
           <a class="dugme dugme-ana" href="#panel" style="width:100%;margin-top:14px">Giriş yap</a>
@@ -65,33 +66,35 @@
     <p class="ikincil" style="margin-bottom:14px">Giriş yapılmış hâlin önizlemesi. Veriler örnektir; görevli adları maskelidir.</p>
     <div class="panel">
       <div class="panel-ust">
-        <div><h2 id="panel-baslik">Gebze Üretim Tesisi</h2><p class="ikincil">3 nokta, 7/24. Hesap yöneticiniz: Selim A.</p></div>
+        <div><h2 id="panel-baslik">Gebze Üretim Tesisi</h2><p class="ikincil">3 nokta, 7/24. 1 Kasım 2026 Pazar, 08:30. Hesap yöneticiniz: Selim A.</p></div>
         <label class="gizli" for="tesis-sec">Tesis</label>
         <select id="tesis-sec"><option>Gebze Üretim Tesisi (3 nokta)</option><option>Tuzla Depo (1 nokta)</option></select>
       </div>
       <div class="panel-govde">
         <div class="durum-serit">
-          <div><span class="etiket">Vardiya devri</span><span class="deger">08:04</span><span class="aciklama">Tamamlandı, 7/7 görevli</span></div>
-          <div><span class="etiket">Devriye turu</span><span class="deger">14/16</span><span class="aciklama">Kontrol noktası okundu</span><div class="cubuk"><i style="width:87.5%"></i></div></div>
-          <div><span class="etiket">Olay</span><span class="deger">1</span><span class="aciklama">02:10, tutanak ekli</span></div>
+          <div><span class="etiket">Vardiya devri</span><span class="deger">08:04</span><span class="aciklama">Tamamlandı, 3/3 nokta</span></div>
+          <div><span class="etiket">Devriye turu</span><span class="deger">14/16</span><span class="aciklama">Okundu; 2 nokta bakımda</span><div class="cubuk"><i style="width:87.5%"></i></div></div>
+          <div><span class="etiket">Olay</span><span class="deger">1</span><span class="aciklama">02:10, kapatıldı</span></div>
           <div><span class="etiket">Açık talep</span><span class="deger">1</span><span class="aciklama">TLP-2026-0412, işlemde</span></div>
         </div>
         <div class="panel-iki">
           <div>
             <h3>Olay akışı, son 24 saat</h3>
             <ol class="akis">
-              <li><time>08:04</time><span>Vardiya devri tamam. Nöbet defteri devralındı, 7/7 görevli hazır.</span></li>
+              <li><time>08:04</time><span>Vardiya devri tamam. 02:10 olayı devir defterine işlendi; olay kapatıldı.</span></li>
               <li><time>07:30</time><span>Sabah raporu gönderildi.</span></li>
+              <li><time>02:16</time><span>Tesis sorumlusu Murat T. bilgilendirildi.</span></li>
               <li><time>02:14</time><span>Tutanak RDN-0412 onaylandı (vardiya amiri Ayşe D.). <a href="#rapor">Tutanağı indir</a></span></li>
               <li><time>02:10</time><span class="olay"><strong>Olay:</strong> Arka kapı açık bulundu, kapatıldı. Fotoğraflı tutanak düzenlendi (Mehmet K.).</span></li>
-              <li><time>00:12</time><span>Gece devriye turu başladı, 16 kontrol noktası.</span></li>
-              <li><time>19:38</time><span>Son sevkiyat aracı çıkış yaptı, mühür no kayıtlı.</span></li>
-              <li><time>14:00</time><span>Saha denetimi: 12 maddelik form, eksik yok.</span></li>
+              <li><time>00:12</time><span>Gece devriye turu başladı. Su deposu ve jeneratör bakım nedeniyle kapalı; tesis yetkilisi onayıyla turdan çıkarıldı.</span></li>
+              <li><time>19:38</time><span>31 Ekim: son sevkiyat aracı çıkış yaptı, mühür no kayıtlı.</span></li>
+              <li><time>14:00</time><span>31 Ekim: saha denetimi, 12 maddelik form, eksik yok.</span></li>
             </ol>
           </div>
           <div>
             <h3>Devriye kontrol noktaları</h3>
-            <ul class="noktalar"><li class="okundu"><span>Ana kapı</span><span>00:12</span></li><li class="okundu"><span>Kantar</span><span>00:16</span></li><li class="okundu"><span>Sevkiyat rampası</span><span>00:21</span></li><li class="okundu"><span>Hammadde deposu</span><span>00:29</span></li><li class="okundu"><span>Kazan dairesi</span><span>00:34</span></li><li class="okundu"><span>Trafo binası</span><span>00:41</span></li><li class="okundu"><span>Arka kapı</span><span>02:10</span></li><li class="okundu"><span>Otopark A</span><span>00:52</span></li><li class="okundu"><span>Otopark B</span><span>00:57</span></li><li class="okundu"><span>Yemekhane</span><span>01:03</span></li><li class="okundu"><span>İdari bina</span><span>01:09</span></li><li class="okundu"><span>Mamul deposu</span><span>01:15</span></li><li class="okundu"><span>Tel örgü kuzey</span><span>01:24</span></li><li class="okundu"><span>Tel örgü doğu</span><span>01:31</span></li><li class="bekliyor"><span>Su deposu</span><span>bekliyor</span></li><li class="bekliyor"><span>Jeneratör</span><span>bekliyor</span></li></ul>
+            <ul class="noktalar"><li class="okundu"><span>Ana kapı</span><span>00:12</span></li><li class="okundu"><span>Kantar</span><span>00:16</span></li><li class="okundu"><span>Sevkiyat rampası</span><span>00:21</span></li><li class="okundu"><span>Hammadde deposu</span><span>00:29</span></li><li class="okundu"><span>Kazan dairesi</span><span>00:34</span></li><li class="okundu"><span>Trafo binası</span><span>00:41</span></li><li class="okundu"><span>Arka kapı</span><span>02:10</span></li><li class="okundu"><span>Otopark A</span><span>00:52</span></li><li class="okundu"><span>Otopark B</span><span>00:57</span></li><li class="okundu"><span>Yemekhane</span><span>01:03</span></li><li class="okundu"><span>İdari bina</span><span>01:09</span></li><li class="okundu"><span>Mamul deposu</span><span>01:15</span></li><li class="okundu"><span>Tel örgü kuzey</span><span>01:24</span></li><li class="okundu"><span>Tel örgü doğu</span><span>01:31</span></li><li class="bekliyor"><span>Su deposu</span><span>bakımda</span></li><li class="bekliyor"><span>Jeneratör</span><span>bakımda</span></li></ul>
+            <p class="ikincil" style="font-size:.88rem;margin:10px 0 0">Su deposu ve jeneratör bakım nedeniyle kapalı alan; tesis yetkilisi onayıyla bu turdan çıkarıldı.</p>
           </div>
         </div>
         <div>
@@ -112,7 +115,7 @@
             <ul class="rapor-liste">
               <li><span>Aylık hizmet raporu, Ekim 2026 (PDF)</span><a class="dugme dugme-cizgi" href="#rapor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>İndir</a></li>
               <li><span>Aylık hizmet raporu, Eylül 2026 (PDF)</span><a class="dugme dugme-cizgi" href="#rapor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>İndir</a></li>
-              <li><span>Tutanak RDN-0412, 2 Kasım 02:10 (PDF)</span><a class="dugme dugme-cizgi" href="#rapor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>İndir</a></li>
+              <li><span>Tutanak RDN-0412, 1 Kasım 02:10 (PDF)</span><a class="dugme dugme-cizgi" href="#rapor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>İndir</a></li>
             </ul>
           </div>
           <div>
@@ -124,7 +127,7 @@
             <form class="form" data-onay="talep-tamam" style="margin-top:18px">
               <div class="alan"><label for="talep">Yeni talep</label><input id="talep" type="text" required placeholder="Örn. 15 Kasım etkinliği için 2 ek görevli"></div>
               <div><button class="dugme dugme-ana" type="submit">Talep aç</button></div>
-              <div class="basari" id="talep-tamam" hidden>Talep açıldı: <span class="veri">TLP-2026-0419</span>. Hesap yöneticiniz Selim A. talebinizi aldı.</div>
+              <div class="basari" id="talep-tamam" hidden>Talep açıldı: <span class="veri">TLP-2026-0419</span>. Hesap yöneticiniz Selim A. talebinizi aldı. <span class="onizleme-not">Önizleme: gerçek talep oluşturulmadı.</span></div>
             </form>
           </div>
         </div>

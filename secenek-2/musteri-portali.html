@@ -48,7 +48,7 @@
 <fieldset><legend>Tek kullanımlık kod</legend>
 <div class="otp"><input aria-label="1. hane" maxlength="1" inputmode="numeric" value=""><input aria-label="2. hane" maxlength="1" inputmode="numeric"><input aria-label="3. hane" maxlength="1" inputmode="numeric"><input aria-label="4. hane" maxlength="1" inputmode="numeric"><input aria-label="5. hane" maxlength="1" inputmode="numeric"><input aria-label="6. hane" maxlength="1" inputmode="numeric"></div></fieldset>
 <button type="button" class="btn" data-enter style="width:100%">Giriş yap</button>
-<p class="hint">Önizlemede herhangi bir kod girişi kabul edilir.</p>
+<p class="sim">Önizleme: SMS gönderilmedi; herhangi bir kod kabul edilir.</p>
 </div>
 </div>
 </div>
@@ -59,26 +59,26 @@
 <div class="note" style="margin-bottom:24px">Aşağısı giriş yapılmış hâlin önizlemesidir. Tesis ve olaylar örnek veridir; görevli adları portalda da maskeli gösterilir.</div>
 <div class="dash-top">
 <div><h2 id="h-panel" style="margin:0">Gebze Üretim Tesisi</h2><p class="muted" style="margin:4px 0 0">3 nokta, 7/24, Marmara Bölge Müdürlüğü. Hesap yöneticisi: Murat A.</p></div>
-<div class="actions"><button type="button" class="btn line sm" data-tab="Önizlemede tesis seçimi tek tesisle gösteriliyor.">Tesis değiştir</button><a class="btn sm" href="#talep">Talep aç</a></div>
+<div class="actions"><button type="button" class="btn line sm" data-tab="Önizleme: tek tesis gösteriliyor.">Tesis değiştir</button><a class="btn sm" href="#talep">Talep aç</a></div>
 </div>
 
 <dl class="kpis">
 <div><dt>Bugünkü nöbet</dt><dd>3 / 3 nokta<small>08:00 vardiya devri tamam</small></dd></div>
-<div><dt>Devriye turu</dt><dd>14 / 16<small>kontrol noktası okundu</small><span class="bar" aria-hidden="true"><i style="width:87.5%"></i></span></dd></div>
-<div><dt>Son 24 saat olay</dt><dd>1<small>tutanağa bağlandı</small></dd></div>
+<div><dt>Devriye turu</dt><dd>14 / 16<small>okundu, 2 nokta bakımda</small><span class="bar" aria-hidden="true"><i style="width:87.5%"></i></span></dd></div>
+<div><dt>Son 24 saat olay</dt><dd>1<small>kapandı, tutanaklı</small></dd></div>
 <div><dt>Açık talep</dt><dd>1<small>işlemde</small></dd></div>
 </dl>
 
 <div class="dash">
 <div>
 <div class="panel">
-<h3>Bugünkü nöbet durumu <small>1 Kasım 2026</small></h3>
+<h3>Bugünkü nöbet durumu <small>1 Kasım 2026 Pazar, 09:40</small></h3>
 <div class="tbl-wrap" style="border:0"><table class="tbl">
 <thead><tr><th scope="col">Nokta</th><th scope="col">Görevli</th><th scope="col">Vardiya</th><th scope="col">Durum</th></tr></thead>
 <tbody>
 <tr><th scope="row">Ana giriş</th><td>Mehmet K.</td><td>08:00–16:00</td><td><span class="pill ok">Nokta başında</span></td></tr>
 <tr><th scope="row">Araç kapısı ve kantar</th><td>Ayşe D.</td><td>08:00–16:00</td><td><span class="pill ok">Nokta başında</span></td></tr>
-<tr><th scope="row">Çevre devriyesi</th><td>Hasan Y.</td><td>08:00–16:00</td><td><span class="pill wait">Turda, 14/16</span></td></tr>
+<tr><th scope="row">Çevre devriyesi</th><td>Hasan Y.</td><td>08:00–16:00</td><td><span class="pill ok">Tur tamam, 14/16</span></td></tr>
 <tr><th scope="row">Vardiya amiri</th><td>Serkan T.</td><td>08:00–20:00</td><td><span class="pill ok">Sahada</span></td></tr>
 </tbody>
 </table></div>
@@ -86,9 +86,9 @@
 <div class="panel">
 <h3>Olay akışı <small>son 24 saat</small></h3>
 <ul class="feed">
-<li><time>14:05</time><div>Devriye turu 2 tamamlandı; 16 noktadan 14'ü okundu. Atlanan: Arka depo B, Jeneratör odası. <span class="lvl">Vardiya amirine bildirildi</span></div></li>
-<li><time>08:00</time><div>Vardiya devri tamam: 3 nokta teslim alındı, devir notu “Kantar yazıcısı kağıt bekliyor”.</div></li>
-<li><time>02:10</time><div><b>Arka kapı açık bulundu, kapatıldı.</b> Fotoğraflı tutanak düzenlendi, tesis teknik sorumlusuna bildirildi. <span class="lvl">Tutanak #OLY-1031-02</span></div></li>
+<li><time>09:30</time><div>Sabah devriye turu tamamlandı: 16 kontrol noktasından 14'ü okundu. Kalan 2 nokta (boyahane B bölümü) bakım nedeniyle kapalı; tesis yetkilisinin onayıyla tura alınmadı. <span class="lvl">Vardiya amiri onayladı</span></div></li>
+<li><time>08:00</time><div>Vardiya devri tamam: 3 nokta teslim alındı. 02:10 olayı devir notuna işlendi; olay kapatıldı.</div></li>
+<li><time>02:10</time><div><b>Arka kapı açık bulundu, kapatıldı.</b> Fotoğraflı tutanak düzenlendi, tesis teknik sorumlusuna telefonla bildirildi. <span class="lvl">Tutanak #OLY-1101-02, kapandı</span></div></li>
 <li><time>00:00</time><div>Vardiya devri tamam: gece ekibi 3 nokta.</div></li>
 </ul>
 </div>
@@ -97,9 +97,9 @@
 <div class="panel">
 <h3>Raporlar</h3>
 <ul class="docs" style="border-top:0;padding:0 20px">
-<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Aylık hizmet raporu, Ekim 2026</b><small>Devriye oranı, olaylar, eğitim kayıtları</small></div><a class="st" href="#rapor" data-toast="Önizlemede rapor dosyası bağlı değildir.">İndir</a></li>
-<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Aylık hizmet raporu, Eylül 2026</b><small>Hesap yöneticisi toplantı tutanağı ekli</small></div><a class="st" href="#rapor" data-toast="Önizlemede rapor dosyası bağlı değildir.">İndir</a></li>
-<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Görevli ÖGKK listesi</b><small>Kart geçerlilik tarihleriyle</small></div><a class="st" href="#rapor" data-toast="Önizlemede rapor dosyası bağlı değildir.">İndir</a></li>
+<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Aylık hizmet raporu, Ekim 2026</b><small>Devriye oranı, olaylar, eğitim kayıtları</small></div><a class="st" href="#rapor" data-toast="Önizleme: rapor dosyası bağlı değil.">İndir</a></li>
+<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Aylık hizmet raporu, Eylül 2026</b><small>Hesap yöneticisi toplantı tutanağı ekli</small></div><a class="st" href="#rapor" data-toast="Önizleme: rapor dosyası bağlı değil.">İndir</a></li>
+<li><svg viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M2 1h18l8 8v26H2z" stroke="#211F20" stroke-width="1.4"/><path d="M20 1v8h8" stroke="#211F20" stroke-width="1.4"/><rect x="0" y="19" width="22" height="10" fill="#801618"/><text x="11" y="27" text-anchor="middle" font-family="Public Sans, Arial" font-size="7.5" font-weight="700" fill="#fff">PDF</text></svg><div><b>Görevli ÖGKK listesi</b><small>Kart geçerlilik tarihleriyle</small></div><a class="st" href="#rapor" data-toast="Önizleme: rapor dosyası bağlı değil.">İndir</a></li>
 </ul>
 </div>
 <div class="panel" id="talep">
@@ -113,7 +113,7 @@
 <div class="field"><label for="t-konu">Yeni talep</label><input id="t-konu" type="text" placeholder="Örnek: Kantar kapısı bariyeri arızalı" required data-err="Talep konusunu yazın."></div>
 <button class="btn sm" type="submit">Talebi aç</button>
 </form>
-<div id="talep-ok" hidden tabindex="-1"><p class="note" style="margin:0">Talep <b data-ref></b> açıldı; hesap yöneticinize iletildi.</p></div>
+<div id="talep-ok" hidden tabindex="-1"><p class="note" style="margin:0">Talep <b data-ref></b> açıldı; hesap yöneticinize iletildi.</p><p class="sim">Önizleme: gerçek talep oluşturulmadı.</p></div>
 </div>
 </div>
 </div>
@@ -134,7 +134,7 @@
 <p><a href="tel:08508887377">0850 888 73 77</a><br><a href="mailto:info@resyonetim.com.tr">info@resyonetim.com.tr</a><br><a href="https://www.ressgroup.com.tr" rel="noopener">www.ressgroup.com.tr</a></p></div>
 </div>
 <div class="foot-bot"><span>© 2026 RESS Koruma ve Özel Güvenlik Hizmetleri Ltd. Şti.</span>
-<span><a href="#kvkk" data-toast="KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metni</a>&nbsp;&nbsp;&nbsp;<a href="#cerez" data-toast="Çerez politikası yayında bu bağlantıda açılacak.">Çerez politikası</a></span>
+<span><a href="#kvkk" data-toast="Önizleme: KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metni</a>&nbsp;&nbsp;&nbsp;<a href="#cerez" data-toast="Önizleme: çerez politikası yayında bu bağlantıda açılacak.">Çerez politikası</a></span>
 <span class="credit">Tasarım önizlemesi: Webizmo</span></div>
 </div></footer>
 <button class="screens-btn" type="button" aria-expanded="false" aria-controls="screens">Ekranlar</button>

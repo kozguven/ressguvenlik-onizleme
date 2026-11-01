@@ -72,9 +72,9 @@
             <div class="alan" style="max-width:220px"><label for="nokta">Nokta sayısı</label><input id="nokta" type="number" min="1" max="40" value="1" inputmode="numeric"></div>
             <fieldset class="alan"><legend>Çalışma saatleri (her nokta için)</legend><div class="secenekler">
               <label class="secenek"><input type="radio" name="saat" value="7/24" checked><span>7/24<small>Haftada 168 saat</small></span></label>
-              <label class="secenek"><input type="radio" name="saat" value="gunduz"><span>Hafta içi gündüz<small>08:00–18:00, 50 saat</small></span></label>
-              <label class="secenek"><input type="radio" name="saat" value="gece"><span>Her gece<small>18:00–08:00, 98 saat</small></span></label>
-              <label class="secenek"><input type="radio" name="saat" value="haftasonu"><span>Hafta sonu<small>Cumartesi ve pazar, 48 saat</small></span></label>
+              <label class="secenek"><input type="radio" name="saat" value="gunduz"><span>Gündüz<small>08:00–20:00, haftada 84 saat</small></span></label>
+              <label class="secenek"><input type="radio" name="saat" value="gece"><span>Gece<small>20:00–08:00, haftada 84 saat</small></span></label>
+              <label class="secenek"><input type="radio" name="saat" value="haftasonu"><span>Yalnız hafta sonu<small>Cumartesi ve pazar, 48 saat</small></span></label>
             </div></fieldset>
             <fieldset class="alan"><legend>Görevli yetkisi</legend><div class="secenekler">
               <label class="secenek"><input type="radio" name="silah" value="Silahsız" checked><span>Silahsız<small>Çoğu tesis için yeterli</small></span></label>
@@ -126,6 +126,7 @@
         <section class="adim">
           <h2>Talebiniz gönderildi</h2>
           <p>Talep numaranız <strong class="veri" id="talep-no" style="color:var(--metin)">RS-2026-0418</strong>. Bölge müdürlüğümüz keşif günü için sizi arayacak.</p>
+          <p><span class="onizleme-not">Önizleme: gerçek talep oluşturulmadı.</span></p>
           <div class="not-kutu">Beklemek istemezseniz <a href="tel:08508887377">0850 888 73 77</a>'yi arayıp talep numaranızı söyleyin.</div>
           <div class="adim-alt"><a class="dugme dugme-cizgi" href="index.html">Ana sayfaya dön</a><a class="dugme dugme-cizgi" href="musteri-portali.html">Müşteri portalını incele</a></div>
         </section>

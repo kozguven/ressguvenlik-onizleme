@@ -117,8 +117,9 @@ if (!CERCEVE){
 var azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll("video").forEach(function(v){ if (azHareket){ v.pause(); v.removeAttribute("autoplay"); } });
 
-/* ---------- dijital asistan: sahnelenmiş akış ---------- */
+/* ---------- dijital asistan: sahnelenmiş akış + yazı alanı ---------- */
 var KARSILAMA = "Ress Dijital Asistanına hoş geldiniz. Özel güvenlik, tesis yönetimi, temizlik ve teknik bakım alanlarında hangi konuda destek almak istediğinizi yazabilirsiniz.";
+var ONIZ = '<span class="oniz-not">Önizleme: gerçek talep oluşturulmadı.</span>';
 var BAS = [
   {k:"teklif", t:"Güvenlik teklifi istiyorum", i:"belge"},
   {k:"basvuru", t:"İş başvurusu yapmak istiyorum", i:"kisi"},
@@ -126,49 +127,79 @@ var BAS = [
   {k:"sikayet", t:"Şikâyet / öneri", i:"uyari"}
 ];
 function no(on){ return on+"-2026-"+String(1000+Math.floor(Math.random()*8999)); }
+/* ortak kadro hesabı: görevli = saat ÷ 45 × 1,12, yukarı yuvarlanır; 7/24'te 6+ görevliye 1 vardiya amiri */
+function kadroHesap(nokta, saat, yirmidort){
+  var ham = nokta*saat/45*1.12, tam = Math.ceil(ham - 1e-9);
+  return { ham: ham, tam: tam, amir: (yirmidort && tam >= 6) ? 1 : 0, yazi: ham.toFixed(1).replace(".",",") };
+}
+window.RESS_KADRO = kadroHesap;
+function iletisimIste(son){
+  return { s:"Bölge müdürlüğümüzün size ulaşabilmesi için adınızı ve telefon numaranızı yazar mısınız?", iletisim:true,
+    o:[["ornek","Örnek bilgiyle devam et"]], sonra:function(){ return son; } };
+}
 var AKIS = {
   teklif:{ s:"Elbette. Hangi tür tesis için güvenlik düşünüyorsunuz?",
     o:[["fabrika","Fabrika / sanayi tesisi"],["site","Site / rezidans"],["hastane","Hastane"],["avm","AVM / mağaza"]],
     sonra:function(sec){ return { s:"Kaç noktada, hangi saatlerde görevli bulunmalı?",
-      o:[["7/24 tek nokta","Tek nokta, 7/24"],["7/24 üç nokta","2–3 nokta, 7/24"],["gece","Yalnız gece"]],
+      o:[["1-168","Tek nokta, 7/24"],["2-168","İki nokta, 7/24"],["1-84","Tek nokta, yalnız gece"]],
       sonra:function(s2){
-        var kadro = s2==="7/24 tek nokta" ? "yaklaşık 4,2 görevli" : (s2==="gece" ? "nokta başına yaklaşık 2,1 görevli" : "nokta başına yaklaşık 4,2 görevli");
-        return { son:true, s:"Bu ihtiyaç için "+kadro+" gerekir: haftada 168 saat, 45 saatlik yasal çalışma süresine bölünür, izin ve tatil payı eklenir. Fiyatı keşiften sonra bölge müdürlüğümüz verir; ben fiyat ya da tarih sözü veremem.",
-          kayit:no("RS"), l:["teklif.html?tesis="+sec,"Teklif sihirbazında tamamla"] };
+        var n = +s2.split("-")[0], sa = +s2.split("-")[1], h = kadroHesap(n, sa, sa===168);
+        var kadro = h.yazi+" → "+h.tam+" görevli"+(h.amir?" + 1 vardiya amiri":"");
+        return iletisimIste({ son:true, s:"Bu ihtiyaç için önerilen kadro: "+kadro+". Hesap: "+n+" nokta × "+sa+" saat ÷ 45 × 1,12 (izin ve tatil payı). Fiyatı keşiften sonra bölge müdürlüğümüz verir; ben fiyat ya da tarih sözü veremem.",
+          kayit:"RS", l:["teklif.html?tesis="+sec,"Teklif sihirbazında tamamla"] });
       }}; } },
   basvuru:{ s:"Teşekkürler. Özel Güvenlik Kimlik Kartınız (ÖGKK) var mı?",
     o:[["gecerli","Var, geçerli"],["yenilenecek","Var, yenilenmesi yakın"],["yok","Henüz yok"]],
     sonra:function(sec){
-      var m = sec==="yok" ? "Kartı olmayan adayları temel eğitim sonrası değerlendiriyoruz. Formda bunu belirtmeniz yeterli; eğitim takvimini İnsan Kaynakları paylaşır."
-        : sec==="yenilenecek" ? "Kart bitiş tarihinizi formda yazın; yenileme eğitimine kadar size hatırlatma yapılır."
-        : "Harika. Açık pozisyonları görüp formu iki dakikada doldurabilirsiniz.";
-      return { son:true, s:m+" Başvurunuz bölge müdürlüğünüze iletilir.", l:["kariyer.html#basvuru","Başvuru formunu aç"] }; } },
-  bolge:{ s:"Hangi ildesiniz?",
+      var m = sec==="yok" ? "Kartı olmayan adaylar için de formu doldurabilirsiniz; İnsan Kaynakları uygun eğitim yolunu sizinle konuşur."
+        : sec==="yenilenecek" ? "Kart bitiş tarihinizi formda yazmanız yeterli; yenileme durumunuz başvuruyla birlikte değerlendirilir."
+        : "Açık pozisyonları görüp formu doldurabilirsiniz.";
+      return { son:true, s:m+" Formu gönderdiğinizde başvurunuz bölge müdürlüğünüze iletilir.", l:["kariyer.html#basvuru","Başvuru formunu aç"] }; } },
+  bolge:{ s:"Hangi ildesiniz? İl adını yazabilir ya da seçebilirsiniz.",
     o:[["gm","İstanbul"],["marmara","Kocaeli / Bursa"],["icanadolu","Ankara"],["ege","İzmir"],["diger","Başka bir il"]],
-    sonra:function(sec){
-      var Y = {gm:"İstanbul Genel Müdürlük (Esenyurt, Sedai Plaza) size en yakın birim.",marmara:"Marmara Bölge Müdürlüğü (Kocaeli) Kocaeli, Sakarya ve Bursa’dan sorumlu.",icanadolu:"İç Anadolu Bölge Müdürlüğü (Ankara) size en yakın birim.",ege:"Ege Bölge Müdürlüğü (İzmir) size en yakın birim.",diger:"8 bölge müdürlüğümüz 81 ilde hizmet verebiliyor. Haritada ilinizi görebilirsiniz."};
-      return { son:true, s:Y[sec]+" Tüm bölgeler için tek numara: 0850 888 73 77.", l:["bolgeler.html"+(sec!=="diger"?"?b="+sec:""),"Bölge kartını aç"] }; } },
-  sikayet:{ s:"Geri bildiriminiz bizim için kayıt altına alınır. Konu nedir?",
+    sonra:function(sec){ return bolgeCevap(sec); } },
+  sikayet:{ s:"Geri bildiriminiz kayıt altına alınır. Konu nedir?",
     o:[["saha","Sahadaki görevli"],["fatura","Fatura / sözleşme"],["oneri","Öneri"]],
-    sonra:function(sec){ return { son:true, s:"Kaydınızı açtım. Genel müdürlük kalite birimi kayıt numarasıyla sizinle iletişime geçer. Ayrıntıyı formdan ekleyebilirsiniz.", kayit:no("SKY"), l:["iletisim.html?konu=sikayet","Ayrıntı ekle"] }; } }
+    sonra:function(){ return iletisimIste({ son:true, s:"Kaydınızı açtım. Genel müdürlük kalite birimi bu kayıt numarasıyla sizinle iletişime geçer. Ayrıntıyı formdan ekleyebilirsiniz.", kayit:"SKY", l:["iletisim.html?konu=sikayet","Ayrıntı ekle"] }); } }
 };
+function bolgeCevap(k){
+  var b = BOLGE.filter(function(x){ return x.k===k; })[0];
+  if (!b) return { son:true, s:"8 bölge müdürlüğümüz 81 ilde hizmet verebiliyor. Haritada ilinizi görebilirsiniz. Tüm bölgeler için tek numara: 0850 888 73 77.", l:["bolgeler.html","Haritayı aç"] };
+  return { son:true, s:b.a+" ("+b.m+") ilinizden sorumlu birim. Tüm bölgeler için tek numara: 0850 888 73 77.", l:["bolgeler.html?b="+b.k,"Bölge kartını aç"] };
+}
+function kucuk(t){ return (t||"").toLocaleLowerCase("tr"); }
+function anahtar(t){
+  var m = kucuk(t);
+  if (/şikay|şikâyet|sikayet|öneri|memnun değil|kötü/.test(m)) return {akis:"sikayet"};
+  if (/başvur|kariyer|iş arı|is ari|eleman|çalışmak|ogkk|ögkk|iş ilan/.test(m)) return {akis:"basvuru"};
+  if (/teklif|fiyat|ücret|görevli|kadro|güvenlik iste|koruma/.test(m)) return {akis:"teklif"};
+  for (var i=0;i<BOLGE.length;i++){ for (var j=0;j<BOLGE[i].il.length;j++){ if (m.indexOf(kucuk(BOLGE[i].il[j]))>-1) return {bolge:BOLGE[i].k}; } }
+  if (/gebze|esenyurt|beylikdüzü|doğubayazıt/.test(m)) return {bolge: /doğubayazıt/.test(m)?"dogu":(/gebze/.test(m)?"marmara":"gm")};
+  if (/bölge|şube|şehir|adres|nerede|yakın/.test(m)) return {akis:"bolge"};
+  return null;
+}
 
 function Sohbet(kok, buyuk){
   this.kok = kok; this.buyuk = buyuk;
   this.m = kok.querySelector(".mesajlar"); this.s = kok.querySelector(".secenekler");
+  this.bekleyen = null; this.secenekFn = null; this.secenekListe = [];
   var ben = this;
   var r = kok.querySelector("[data-sifirla]"); if (r) r.addEventListener("click", function(){ ben.basla(); });
+  var f = kok.querySelector(".yaz-form");
+  if (f) f.addEventListener("submit", function(e){
+    e.preventDefault(); var inp = f.querySelector("input"); var t = inp.value.trim(); if (!t) return; inp.value = ""; ben.yazildi(t);
+  });
   this.basla();
 }
 Sohbet.prototype.ekle = function(html, sinif){
   var d = document.createElement("div"); d.className = "msj "+sinif; d.innerHTML = html; this.m.appendChild(d); this.m.scrollTop = this.m.scrollHeight; return d;
 };
 Sohbet.prototype.basla = function(){
-  this.m.innerHTML = ""; this.ekle("<p>"+KARSILAMA+"</p>","msj-bot");
+  this.m.innerHTML = ""; this.bekleyen = null; this.ekle("<p>"+KARSILAMA+"</p>","msj-bot");
   this.secenek(BAS.map(function(b){ return [b.k,b.t,b.i]; }), this.ilk.bind(this));
 };
 Sohbet.prototype.secenek = function(liste, fn){
-  var ben = this; this.s.innerHTML = "";
+  var ben = this; this.s.innerHTML = ""; this.secenekFn = fn; this.secenekListe = liste;
   liste.forEach(function(o){
     var b = document.createElement("button"); b.type = "button"; b.className = "secenek";
     b.innerHTML = (o[2] && ben.buyuk ? ik(o[2]) : "")+"<span>"+o[1]+"</span>";
@@ -180,58 +211,79 @@ Sohbet.prototype.yaz = function(cb){
   var ben = this; this.s.innerHTML = "";
   var y = document.createElement("div"); y.className = "yaziyor"; y.setAttribute("aria-label","Asistan yazıyor"); y.innerHTML = "<i></i><i></i><i></i>";
   this.m.appendChild(y); this.m.scrollTop = this.m.scrollHeight;
-  setTimeout(function(){ y.remove(); cb(); }, azHareket ? 150 : 750);
+  setTimeout(function(){ y.remove(); cb(); }, azHareket ? 150 : 700);
 };
 Sohbet.prototype.adim = function(d){
-  var ben = this;
+  var ben = this; this.bekleyen = null;
   this.yaz(function(){
-    var h = "<p>"+d.s+"</p>"; if (d.kayit) h += '<span class="kayit">Kayıt no: <span class="veri">'+d.kayit+"</span></span>";
+    var h = "<p>"+d.s+"</p>";
+    if (d.kayit) h += '<span class="kayit">Kayıt no: <span class="veri">'+no(d.kayit)+"</span></span>"+ONIZ;
     ben.ekle(h, "msj-bot");
     if (d.son){
       var a = document.createElement("a"); a.className = "dug dug-bordo msj-link"; a.href = d.l[0]; a.textContent = d.l[1];
       ben.m.appendChild(a); ben.m.scrollTop = ben.m.scrollHeight;
       ben.secenek([["yeni","Başka bir konu"]], function(){ ben.basla(); });
+    } else if (d.iletisim){
+      ben.bekleyen = function(t){ ben.ekle("<p>"+t.replace(/</g,"&lt;")+"</p>","msj-kul"); ben.adim(d.sonra()); };
+      ben.secenek(d.o, function(){ ben.ekle("<p>Ayşe Y., 05•• ••• •• 21</p>","msj-kul"); ben.adim(d.sonra()); });
     } else {
       ben.secenek(d.o, function(k, t){ ben.ekle("<p>"+t+"</p>","msj-kul"); ben.adim(d.sonra(k)); });
     }
   });
 };
 Sohbet.prototype.ilk = function(k, t){ this.ekle("<p>"+t+"</p>","msj-kul"); this.adim(AKIS[k]); };
+Sohbet.prototype.yazildi = function(t){
+  if (this.bekleyen){ this.bekleyen(t); return; }
+  var m = kucuk(t), ben = this;
+  /* açık seçeneklerden biriyle eşleşiyor mu? */
+  var es = this.secenekListe.filter(function(o){ var ilk = kucuk(o[1]).split(/[ ,/]/)[0]; return ilk.length>2 && m.indexOf(ilk)>-1; })[0];
+  if (es && this.secenekFn){ this.secenekFn(es[0], es[1]); return; }
+  this.ekle("<p>"+t.replace(/</g,"&lt;")+"</p>","msj-kul");
+  var a = anahtar(t);
+  if (a && a.bolge){ this.adim(bolgeCevap(a.bolge)); return; }
+  if (a && a.akis){ this.adim(AKIS[a.akis]); return; }
+  this.yaz(function(){
+    ben.ekle("<p>Bunu tam anlayamadım. Şu konularda hemen yardımcı olabilirim:</p>","msj-bot");
+    ben.secenek(BAS.map(function(b){ return [b.k,b.t,b.i]; }), ben.ilk.bind(ben));
+  });
+};
 /* çerçeve/önizleme için akışı kendiliğinden oynat */
 Sohbet.prototype.oynat = function(k, secimler){
-  var ben = this, d = AKIS[k];
+  var ben = this, i = 0;
   ben.ekle("<p>"+BAS.filter(function(b){return b.k===k;})[0].t+"</p>","msj-kul");
-  var i = 0;
   (function ileri(dd){
     ben.yaz(function(){
-      var h = "<p>"+dd.s+"</p>"; if (dd.kayit) h += '<span class="kayit">Kayıt no: <span class="veri">'+dd.kayit+"</span></span>";
+      var h = "<p>"+dd.s+"</p>"; if (dd.kayit) h += '<span class="kayit">Kayıt no: <span class="veri">'+no(dd.kayit)+"</span></span>"+ONIZ;
       ben.ekle(h,"msj-bot");
       if (dd.son){ var a=document.createElement("a"); a.className="dug dug-bordo msj-link"; a.href=dd.l[0]; a.textContent=dd.l[1]; ben.m.appendChild(a); ben.m.scrollTop=ben.m.scrollHeight; ben.secenek([["yeni","Başka bir konu"]], function(){ ben.basla(); }); return; }
+      if (dd.iletisim){ ben.ekle("<p>Ayşe Y., 05•• ••• •• 21</p>","msj-kul"); ileri(dd.sonra()); return; }
       var s = dd.o.filter(function(o){return o[0]===secimler[i];})[0] || dd.o[0]; i++;
       ben.ekle("<p>"+s[1]+"</p>","msj-kul"); ileri(dd.sonra(s[0]));
     });
-  })(d);
+  })(AKIS[k]);
 };
 
-var sohbetHTML = '<div class="sohbet"><div class="mesajlar" aria-live="polite"></div><div class="secenekler"></div><div class="sohbet-alt"><span>Yapay zekâ asistanı. Fiyat ve tarih sözü vermez, talebinizi bölge müdürlüğüne iletir.</span><button type="button" data-sifirla>Baştan başla</button></div></div>';
+var sohbetHTML = '<div class="sohbet"><div class="mesajlar" aria-live="polite"></div><div class="secenekler"></div>'+
+  '<form class="yaz-form"><label class="gizli" for="__ID__">Asistana yazın</label><input type="text" id="__ID__" placeholder="Örn. Gebze’deki fabrikamız için teklif" autocomplete="off"><button class="dug dug-bordo" type="submit">Yaz</button></form>'+
+  '<div class="sohbet-alt"><span>Yapay zekâ asistanı. Fiyat ve tarih sözü vermez, talebinizi bölge müdürlüğüne iletir.</span><button type="button" data-sifirla>Baştan başla</button></div></div>';
 
-/* ana sayfadaki büyük kutu */
+/* ana sayfadaki kutu */
 var buyukKutu = document.getElementById("asistanKutu");
 var buyukSohbet = null;
 if (buyukKutu){
-  buyukKutu.insertAdjacentHTML("beforeend", sohbetHTML);
+  buyukKutu.insertAdjacentHTML("beforeend", sohbetHTML.replace(/__ID__/g,"asistanYazi"));
   buyukSohbet = new Sohbet(buyukKutu, true);
 }
 
 /* panel (diğer sayfalar + telefonda sekme) */
 var pan = document.createElement("div");
 pan.className = "asistan-pan"; pan.id = "asistanPan"; pan.setAttribute("role","dialog"); pan.setAttribute("aria-label","Ress Dijital Asistan");
-pan.innerHTML = '<div class="pan-bas"><span class="yuz">'+ik("asistan")+'</span><div><strong>Ress Dijital Asistan</strong><span>Yapay zekâ ile çalışır, ekibimiz denetler</span></div><button class="pan-kapat" type="button" aria-label="Asistanı kapat">'+ik("kapat")+'</button></div>'+sohbetHTML;
+pan.innerHTML = '<div class="pan-bas"><span class="yuz">'+ik("asistan")+'</span><div><strong>Ress Dijital Asistan</strong><span>Yapay zekâ ile çalışır, ekibimiz denetler</span></div><button class="pan-kapat" type="button" aria-label="Asistanı kapat">'+ik("kapat")+'</button></div>'+sohbetHTML.replace(/__ID__/g,"panelYazi");
 var perde = document.createElement("div"); perde.className = "perde";
 document.body.appendChild(perde); document.body.appendChild(pan);
 var panSohbet = null;
-function panAc(akis){
-  if (buyukKutu && window.innerWidth >= 1100 && !akis){ buyukKutu.scrollIntoView({behavior: azHareket?"auto":"smooth", block:"center"}); return; }
+function panAc(){
+  if (buyukKutu && window.innerWidth >= 1100){ buyukKutu.scrollIntoView({behavior: azHareket?"auto":"smooth", block:"center"}); return; }
   pan.classList.add("acik"); perde.classList.add("acik");
   if (!panSohbet) panSohbet = new Sohbet(pan, false);
   pan.querySelector(".pan-kapat").focus();
@@ -250,6 +302,7 @@ if (Q.get("asistan")){
   if (buyukKutu && buyukSohbet){ buyukSohbet.m.innerHTML=""; buyukSohbet.ekle("<p>"+KARSILAMA+"</p>","msj-bot"); buyukSohbet.oynat(hedefAkis, sec); }
   else { pan.classList.add("acik"); perde.classList.add("acik"); panSohbet = new Sohbet(pan,false); panSohbet.m.innerHTML=""; panSohbet.ekle("<p>"+KARSILAMA+"</p>","msj-bot"); panSohbet.oynat(hedefAkis, sec); }
 }
+if (Q.get("yazi") && buyukSohbet){ setTimeout(function(){ buyukSohbet.yazildi(Q.get("yazi")); }, 100); }
 
 /* ---------- hizmet verisi ---------- */
 var HIZ = [
@@ -368,7 +421,7 @@ if (sih){
   function hesapla(){
     var nokta = +document.getElementById("noktaSay").value;
     var sa = SAAT[deger("saat")] || 168;
-    var kisi = nokta*sa/45*1.125;
+    var hk = kadroHesap(nokta, sa, deger("saat")==="7/24");
     var ekler = [].map.call(sih.querySelectorAll('[name="ek"]:checked'), function(e){ return e.getAttribute("data-ad"); });
     var tesis = sih.querySelector('[name="tesis"]:checked');
     var il = document.getElementById("il").value, ilce = document.getElementById("ilce").value;
@@ -380,11 +433,9 @@ if (sih){
       ek: ekler.length ? ekler.join(", ") : "Yok"
     };
     Object.keys(ozet).forEach(function(k){ document.querySelectorAll('[data-oz="'+k+'"]').forEach(function(e){ e.textContent = ozet[k]; }); });
-    var tam = Math.ceil(kisi);
-    var amir = tam >= 8 ? 1 : 0;
-    document.querySelectorAll("[data-kadro]").forEach(function(e){ e.textContent = kisi.toFixed(1).replace(".",",")+" görevli"; });
+    document.querySelectorAll("[data-kadro]").forEach(function(e){ e.textContent = hk.tam+" görevli"+(hk.amir?" + 1 amir":""); });
     document.querySelectorAll("[data-kadro-ac]").forEach(function(e){
-      e.textContent = tam+" kişilik ekip olarak planlanır"+(amir?", 1 vardiya amiri eklenir":"")+". Hesap: "+nokta+" nokta × "+sa+" saat ÷ 45 saat, izin ve tatil payıyla.";
+      e.textContent = "Hesap: "+nokta+" nokta × "+sa+" saat ÷ 45 × 1,12 = "+hk.yazi+", yukarı yuvarlanır: "+hk.tam+" görevli"+(hk.amir?"; 7/24 hizmette 6 ve üzeri görevliye 1 vardiya amiri eklenir":"")+".";
     });
     var model = ["Vardiyalı "+(deger("yetki")==="silahli"?"silahlı":"silahsız")+" özel güvenlik", "RDN dijital nöbet: NFC devriye ve olay tutanağı", "Aylık hizmet raporu ve hesap yöneticisi"];
     ekler.forEach(function(e){ model.push(e); });
@@ -404,7 +455,15 @@ if (sih){
     hesapla();
   }
   sih.addEventListener("change", hesapla); sih.addEventListener("input", hesapla);
+  function uyar(m){
+    var u = adimlar[cur].querySelector(".uyari-not");
+    if (!u){ u = document.createElement("p"); u.className = "uyari-not"; u.setAttribute("role","alert"); adimlar[cur].appendChild(u); }
+    u.textContent = m; u.hidden = false;
+  }
+  sih.addEventListener("change", function(){ sih.querySelectorAll(".uyari-not").forEach(function(u){ u.hidden = true; }); });
   document.getElementById("ileriDug").addEventListener("click", function(){
+    if (cur===0 && !deger("tesis")){ uyar("Devam etmek için bir tesis türü seçin."); return; }
+    if (cur===1 && !document.getElementById("il").value){ uyar("Talebinizi doğru bölgeye iletebilmemiz için il seçin."); return; }
     if (cur===N-2){
       var f = document.getElementById("iletisimForm");
       if (!f.reportValidity()) return;
@@ -419,7 +478,7 @@ if (sih){
   var t = Q.get("tesis"); if (t){ var r = sih.querySelector('[name="tesis"][value="'+t+'"]'); if (r) r.checked = true; }
   var a = +Q.get("adim");
   if (a){ var f1 = sih.querySelector('[name="tesis"][value="fabrika"]'); if (!t && f1) f1.checked = true; document.getElementById("il").value="Kocaeli"; document.getElementById("ilce").value="Gebze"; }
-  if (a >= 4){ var n = document.getElementById("noktaSay"); n.value = 3; document.getElementById("noktaCikti").textContent = 3; var k9 = sih.querySelector('[name="ek"][value="kamera"]'); if (k9) k9.checked = true; }
+  if (a >= 4){ var n = document.getElementById("noktaSay"); n.value = 2; document.getElementById("noktaCikti").textContent = 2; var k9 = sih.querySelector('[name="ek"][value="kamera"]'); if (k9) k9.checked = true; }
   goster(a ? a-1 : 0);
 }
 
@@ -434,7 +493,7 @@ document.querySelectorAll("form[data-gonder]").forEach(function(f){
     if (c){ c.hidden = false; var n = c.querySelector(".veri"); if (n) n.textContent = no(f.getAttribute("data-gonder")); f.hidden = true; c.focus(); }
   });
 });
-document.querySelectorAll("[data-indir]").forEach(function(b){ b.addEventListener("click", function(){ b.textContent = "Önizlemede indirme kapalı"; }); });
+document.querySelectorAll("[data-indir]").forEach(function(b){ b.addEventListener("click", function(){ b.textContent = "Önizleme: örnek rapor indirilemez"; }); });
 var konu = Q.get("konu"); if (konu){ var ks = document.getElementById("konu"); if (ks) ks.value = konu; }
 
 /* ---------- müşteri portalı ---------- */
@@ -456,6 +515,8 @@ if (kodGonder){
   });
   document.getElementById("geriEposta").addEventListener("click", function(){ document.getElementById("girisAdim1").hidden = false; document.getElementById("girisAdim2").hidden = true; });
 }
+var tsec = document.querySelector(".tesis-sec");
+if (tsec) tsec.addEventListener("click", function(){ var n = document.getElementById("tesisNot"); if (!n){ n = document.createElement("span"); n.id="tesisNot"; n.className="oniz-not"; n.style.margin="0"; n.textContent="Önizleme: örnek hesapta tek tesis var."; tsec.after(n); } });
 var pnav = document.querySelectorAll(".portal-nav [role=tab]");
 pnav.forEach(function(b){
   b.addEventListener("click", function(){
@@ -477,7 +538,7 @@ if (talepDlg){
     var baslik = document.getElementById("talepKonu").value || "Yeni talep";
     var no2 = "TLP-2026-0"+(413+document.querySelectorAll(".talep-satir").length);
     var row = document.createElement("div"); row.className = "talep-satir";
-    row.innerHTML = '<div><strong>'+baslik.replace(/</g,"&lt;")+'</strong><p><span class="veri">#'+no2+'</span>, az önce açıldı</p></div><span class="durum d-bekliyor">Alındı</span>';
+    row.innerHTML = '<div><strong>'+baslik.replace(/</g,"&lt;")+'</strong><p><span class="veri">#'+no2+'</span>, az önce açıldı</p><span class="oniz-not">Önizleme: gerçek talep oluşturulmadı.</span></div><span class="durum d-bekliyor">Alındı</span>';
     var tl = document.getElementById("talepListe"); tl.insertBefore(row, tl.firstChild);
     talepDlg.close(); e.target.reset();
   });

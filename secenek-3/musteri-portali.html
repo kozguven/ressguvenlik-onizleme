@@ -23,7 +23,8 @@
         <button class="dug dug-bordo dug-tam" type="button" id="kodGonder">SMS kodu gönder</button>
       </div>
       <div id="girisAdim2" hidden>
-        <p style="margin-bottom:12px">Kayıtlı telefonunuza (<span class="veri">05•• ••• •• 47</span>) 6 haneli kod gönderdik.</p>
+        <p style="margin-bottom:6px">Kayıtlı telefonunuza (<span class="veri">05•• ••• •• 47</span>) 6 haneli kod gönderdik.</p>
+        <p class="oniz-not" style="margin:0 0 12px">Önizleme: SMS gönderilmedi; herhangi 6 rakam yazıp devam edin.</p>
         <fieldset class="alan"><legend>Doğrulama kodu</legend>
           <div class="kod-kutular">
             <input type="text" inputmode="numeric" maxlength="1" aria-label="1. hane" autocomplete="one-time-code">
@@ -47,7 +48,7 @@
       <ul class="hero-kanit" style="color:var(--metin);flex-direction:column;gap:10px">
         <li><span data-ik="nfc"></span>Her kontrol noktası okutması saatiyle</li>
         <li><span data-ik="bayrak"></span>Fotoğraflı olay tutanakları, kayıt numarasıyla</li>
-        <li><span data-ik="belge"></span>Aylık hizmet raporu, imzalı PDF</li>
+        <li><span data-ik="belge"></span>Aylık hizmet raporu, PDF</li>
         <li><span data-ik="asistan"></span>Talep açma ve kapanana kadar izleme</li>
       </ul>
     </div>
@@ -63,8 +64,8 @@
 
     <div class="portal">
       <div class="portal-ust">
-        <button class="tesis-sec" type="button"><span data-ik="fabrika"></span>Gebze Üretim Tesisi<span data-ik="asagi"></span></button>
-        <span class="durum d-tamam">3 noktada görevli var</span>
+        <button class="tesis-sec" type="button" title="Önizlemede tek tesis var"><span data-ik="fabrika"></span>Gebze Üretim Tesisi<span data-ik="asagi"></span></button>
+        <span class="durum d-tamam">Gündüz vardiyası görevde</span>
         <div class="sag">
           <span class="ikincil kucuk">Hesap yöneticiniz: Selin A.</span>
           <span class="avatar" aria-label="Kullanıcı: Murat T.">MT</span>
@@ -83,11 +84,11 @@
 
           <!-- Bugün -->
           <div class="p-sekme aktif" id="pBugun" role="tabpanel">
-            <div class="p-baslik"><h2>Çarşamba, 28 Ekim 2026</h2><span class="ikincil kucuk">Son güncelleme <span class="veri">09:12</span></span></div>
+            <div class="p-baslik"><h2>Pazar, 1 Kasım 2026</h2><span class="ikincil kucuk">Son güncelleme <span class="veri">09:12</span></span></div>
             <div class="nokta-kartlar">
-              <div class="nokta-kart"><h3>Ana kapı ve kantar</h3><span class="durum d-tamam">Vardiya devri tamam</span><p>Mehmet K., Ayşe D. <span class="veri">08:00–20:00</span></p></div>
-              <div class="nokta-kart"><h3>Sevkiyat kapısı</h3><span class="durum d-tamam">Vardiya devri tamam</span><p>Hasan Y. <span class="veri">08:00–20:00</span></p></div>
-              <div class="nokta-kart"><h3>Arka saha devriyesi</h3><span class="durum d-bekliyor">Gece başlar</span><p>Gece ekibi <span class="veri">20:00–08:00</span></p></div>
+              <div class="nokta-kart"><h3>Ana kapı ve kantar, 7/24</h3><span class="durum d-tamam">Vardiya devri 08:00</span><p>Mehmet K., Ayşe D. <span class="veri">08:00–20:00</span></p></div>
+              <div class="nokta-kart"><h3>Sevkiyat kapısı, 7/24</h3><span class="durum d-tamam">Vardiya devri 08:00</span><p>Hasan Y. <span class="veri">08:00–20:00</span></p></div>
+              <div class="nokta-kart"><h3>Arka saha devriyesi, gece</h3><span class="durum d-tamam">Gece turu tamamlandı</span><p>Sıradaki tur <span class="veri">20:00–08:00</span></p></div>
             </div>
             <div class="p-iki">
               <div class="p-blok">
@@ -96,26 +97,27 @@
                   <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span>
                   <span>09</span><span>10</span><span class="bek">11</span><span class="bek">12</span><span>13</span><span>14</span><span>15</span><span>16</span>
                 </div>
-                <p class="kucuk ikincil" style="margin:0">KN-11 ve KN-12 (otopark arka hat) yağmur nedeniyle sabah turuna aktarıldı, <span class="veri">10:00</span>’da okunacak.</p>
+                <p class="kucuk ikincil" style="margin:0">KN-11 ve KN-12 boya hattı bakımı nedeniyle kapalı alanda; tesis yetkilisinin onayıyla bakım bitene kadar tur dışı.</p>
               </div>
               <div class="p-blok">
                 <h3>Son 24 saat</h3>
                 <ol class="akis">
-                  <li><time class="veri">08:00</time><div><h4>Vardiya devri</h4><p>3 noktada imzalı devir.</p></div></li>
-                  <li><time class="veri">05:40</time><div><h4>Devriye turu bitti</h4><p>14 nokta okundu, 2 nokta sabaha aktarıldı.</p></div></li>
-                  <li><time class="veri">02:10</time><div><h4>Arka kapı açık bulundu</h4><p>Kapatıldı, fotoğraflı tutanak <span class="veri">OLY-2026-0318</span>.</p><span class="durum d-olay">Olay kaydı</span></div></li>
+                  <li><time class="veri">08:00</time><div><h4>Vardiya devri</h4><p>3 noktada imzalı devir; 02:10 olayı devir notuna işlendi.</p></div></li>
+                  <li><time class="veri">05:40</time><div><h4>Gece devriye turu bitti</h4><p>14 nokta okundu; 2 nokta onaylı tur dışı.</p></div></li>
+                  <li><time class="veri">02:14</time><div><h4>Tesis sorumlusuna bildirildi</h4><p>Telefonla ve portal bildirimiyle.</p></div></li>
+                  <li><time class="veri">02:10</time><div><h4>Arka kapı açık bulundu</h4><p>Kilitlendi, fotoğraflı tutanak <span class="veri">OLY-2026-0318</span>.</p><span class="durum d-olay">Olay kaydı, kapatıldı</span></div></li>
                 </ol>
               </div>
             </div>
             <div class="p-blok" style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-              <div><h3 style="margin:0 0 2px">Ekim 2026 hizmet raporu hazır</h3><p class="ikincil kucuk" style="margin:0">31 vardiya devri, 496 devriye turu, 3 olay kaydı, 1 açık talep.</p></div>
+              <div><h3 style="margin:0 0 2px">Ekim 2026 hizmet raporu hazır</h3><p class="ikincil kucuk" style="margin:0">31 gün, 62 vardiya devri, 3 olay kaydı, 1 açık talep.</p></div>
               <button class="dug dug-bordo" type="button" data-indir>Raporu indir (PDF)</button>
             </div>
           </div>
 
           <!-- Devriye -->
           <div class="p-sekme" id="pDevriye" role="tabpanel">
-            <div class="p-baslik"><h2>Gece devriyesi, 27–28 Ekim</h2><span class="durum d-bekliyor">2 nokta bekliyor</span></div>
+            <div class="p-baslik"><h2>Gece devriyesi, 31 Ekim – 1 Kasım</h2><span class="durum d-bekliyor">2 nokta onaylı tur dışı</span></div>
             <div class="p-blok">
               <ul class="kn-liste">
                 <li><span class="veri">KN-01</span><span>Ana kapı bariyeri</span><span class="veri">23:04</span></li>
@@ -126,10 +128,10 @@
                 <li><span class="veri">KN-06</span><span>Jeneratör odası</span><span class="veri">23:37</span></li>
                 <li><span class="veri">KN-07</span><span>Doğu tel örgü hattı</span><span class="veri">23:46</span></li>
                 <li><span class="veri">KN-08</span><span>Atık sahası</span><span class="veri">23:55</span></li>
-                <li><span class="veri">KN-09</span><span>Arka kapı</span><span class="veri">02:10</span></li>
+                <li><span class="veri">KN-09</span><span>Arka kapı (olay kaydı)</span><span class="veri">02:10</span></li>
                 <li><span class="veri">KN-10</span><span>Batı tel örgü hattı</span><span class="veri">02:24</span></li>
-                <li><span class="veri">KN-11</span><span>Otopark arka hat</span><span class="durum d-bekliyor">Sabaha aktarıldı</span></li>
-                <li><span class="veri">KN-12</span><span>Otopark aydınlatma direği</span><span class="durum d-bekliyor">Sabaha aktarıldı</span></li>
+                <li><span class="veri">KN-11</span><span>Boya hattı arka kapısı</span><span class="durum d-bekliyor">Bakım, onaylı</span></li>
+                <li><span class="veri">KN-12</span><span>Boya hattı malzeme odası</span><span class="durum d-bekliyor">Bakım, onaylı</span></li>
                 <li><span class="veri">KN-13</span><span>Sevkiyat rampası</span><span class="veri">04:58</span></li>
                 <li><span class="veri">KN-14</span><span>Yangın dolabı, üretim</span><span class="veri">05:12</span></li>
                 <li><span class="veri">KN-15</span><span>Personel girişi</span><span class="veri">05:28</span></li>
@@ -143,12 +145,12 @@
             <div class="p-baslik"><h2>Olay kayıtları, Ekim 2026</h2><span class="ikincil kucuk">3 kayıt</span></div>
             <article class="p-blok" style="margin-bottom:12px">
               <div class="olay-detay">
-                <img src="../assets/img/fabrika-guvenlik.jpg" alt="Olay tutanağına eklenen fotoğraf: tesis arka kapısı">
+                <img src="../assets/img/fabrika-guvenlik.jpg" alt="Temsili fotoğraf: olay tutanağına eklenen görüntü">
                 <div>
-                  <h3 style="justify-content:flex-start;gap:10px">Arka kapı açık bulundu <span class="durum d-olay">Olay</span></h3>
-                  <p class="kucuk ikincil" style="margin:0 0 8px"><span class="veri">OLY-2026-0318</span>, 28 Ekim <span class="veri">02:10</span>, KN-09</p>
-                  <p style="margin:0 0 8px">Devriyedeki görevli Mehmet K. arka kapının kilitsiz ve aralık olduğunu tespit etti. Çevrede kimse görülmedi, iz yok. Kapı kilitlendi, fotoğraf eklendi, vardiya amirine <span class="veri">02:14</span>’te bildirildi.</p>
-                  <p class="kucuk" style="margin:0"><strong>Öneri:</strong> Kapıya kapanma sensörü takılması. Hesap yöneticiniz bu hafta arayacak.</p>
+                  <h3 style="justify-content:flex-start;gap:10px">Arka kapı açık bulundu <span class="durum d-olay">Olay, kapatıldı</span></h3>
+                  <p class="kucuk ikincil" style="margin:0 0 8px"><span class="veri">OLY-2026-0318</span>, 1 Kasım <span class="veri">02:10</span>, KN-09</p>
+                  <p style="margin:0 0 8px">Gece devriyesindeki görevli Serkan B. arka kapının kilitsiz ve aralık olduğunu tespit etti. Çevre kontrol edildi, kimse görülmedi. Kapı kilitlendi, fotoğraflı tutanak tutuldu, <span class="veri">02:14</span>’te tesis sorumlusuna bildirildi, <span class="veri">08:00</span> vardiya devrinde not edildi.</p>
+                  <p class="kucuk" style="margin:0"><strong>Öneri:</strong> Kapıya kapanma sensörü takılması; hesap yöneticiniz konuyu sizinle değerlendirecek.</p>
                 </div>
               </div>
             </article>
@@ -160,7 +162,7 @@
 
           <!-- Personel -->
           <div class="p-sekme" id="pPersonel" role="tabpanel">
-            <div class="p-baslik"><h2>Tesisteki ekip</h2><span class="ikincil kucuk">12 kişi, e-PMS kaydından</span></div>
+            <div class="p-baslik"><h2>Tesisteki ekip</h2><span class="ikincil kucuk">11 görevli + 1 vardiya amiri, e-PMS kaydından</span></div>
             <div class="tablo-sar">
               <table>
                 <thead><tr><th scope="col">Görevli</th><th scope="col">Görev</th><th scope="col">Vardiya</th><th scope="col">ÖGKK bitiş</th></tr></thead>
@@ -174,16 +176,16 @@
                 </tbody>
               </table>
             </div>
-            <p class="kucuk ikincil" style="margin-top:10px">Kartı 3 aydan kısa sürede bitecek görevli için yenileme eğitimi planlandı; yerine yedek görevli hazır.</p>
+            <p class="kucuk ikincil" style="margin-top:10px">Kartı 3 aydan kısa sürede bitecek görevli işaretlenir; yenileme planı hesap yöneticinizle paylaşılır.</p>
           </div>
 
           <!-- Raporlar -->
           <div class="p-sekme" id="pRapor" role="tabpanel">
             <div class="p-baslik"><h2>Aylık hizmet raporları</h2></div>
             <div style="display:grid;gap:10px">
-              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ekim 2026</strong><small>31 vardiya, 496 devriye, 3 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
-              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Eylül 2026</strong><small>30 vardiya, 480 devriye, 1 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
-              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ağustos 2026</strong><small>31 vardiya, 494 devriye, 2 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ekim 2026</strong><small>31 gün, 62 vardiya devri, 3 olay. PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Eylül 2026</strong><small>30 gün, 60 vardiya devri, 1 olay. PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ağustos 2026</strong><small>31 gün, 62 vardiya devri, 2 olay. PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
             </div>
           </div>
 

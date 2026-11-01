@@ -33,7 +33,7 @@
 <div>
 <p class="crumb"><a href="index.html">Ana sayfa</a> / Keşif ve teklif talebi</p>
 <h1>Keşif ve teklif talebi</h1>
-<p class="lede">Tesisinizi beş kısa adımda tanımlayın; önerilen kadroyu ve hizmet modelini hemen görün. Talebiniz bağlı olduğunuz bölge müdürlüğüne iletilir, keşif için sizi ararlar. Fiyat keşiften sonra yazılı teklifle verilir.</p>
+<p class="lede">Tesisinizi beş kısa adımda tanımlayın; önerilen kadroyu ve hizmet modelini hemen görün. Talebiniz bağlı olduğunuz bölge müdürlüğüne iletilir. Fiyat keşiften sonra yazılı teklifle verilir.</p>
 </div>
 <div class="toc"><p class="toc-t">Ortalama süre</p><p class="muted small" style="margin:0">Formu doldurmak yaklaşık 3 dakika sürer. Bilmediğiniz alanları boş bırakabilirsiniz; keşifte birlikte tamamlarız.</p></div>
 </div>
@@ -86,8 +86,9 @@
 <label><input type="radio" name="saat" value="724" checked><span>7/24</span></label>
 <label><input type="radio" name="saat" value="gunduz"><span>Gündüz 08–20</span></label>
 <label><input type="radio" name="saat" value="gece"><span>Gece 20–08</span></label>
+<label><input type="radio" name="saat" value="haftasonu"><span>Yalnız hafta sonu</span></label>
 </div>
-<p class="hint">Yalnız hafta sonu ya da mesai dışı hizmet istiyorsanız iletişim adımındaki nota yazın.</p></fieldset>
+<p class="hint">Farklı saat düzeni istiyorsanız iletişim adımındaki nota yazın.</p></fieldset>
 <fieldset><legend>Görev türü</legend>
 <div class="seg">
 <label><input type="radio" name="silah" value="0" checked><span>Silahsız</span></label>
@@ -122,7 +123,7 @@
 <p class="small muted" data-s="hesap"></p>
 <p class="res-note" data-s="not"></p>
 </div>
-<p class="muted small" style="margin-top:14px">Bu bir ön hesaptır. Kesin kadro ve fiyat keşiften sonra yazılı teklifle bildirilir.</p>
+<p class="muted small" style="margin-top:14px">Bu bir ön hesaptır. 45 saat: İş Kanunu'na göre haftalık en çok çalışma süresi. Kesin kadro keşiften sonra belirlenir; fiyat yazılı teklifle bildirilir.</p>
 <div class="wnav"><button type="button" class="btn line" data-prev>Geri</button><button type="button" class="btn" data-next>İletişim bilgilerine geç</button></div>
 </div>
 
@@ -135,8 +136,7 @@
 <div class="field"><label for="w-tel">Telefon</label><input id="w-tel" name="tel" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required data-err="Keşif randevusu için telefon gerekli."></div>
 <div class="field full"><label for="w-mail">E-posta</label><input id="w-mail" name="mail" type="email" autocomplete="email"></div>
 <div class="field full"><label for="w-not">Not</label><textarea id="w-not" name="not" placeholder="Mevcut güvenlik firması, geçiş tarihi, özel istekler"></textarea></div>
-<div class="field full"><label class="check"><input type="checkbox" name="ref"><span>Sektörümdeki bir müşterinizle referans görüşmesi yapmak istiyorum.</span></label></div>
-<div class="field full"><label class="check"><input type="checkbox" name="kvkk" required data-err="Devam etmek için aydınlatma metnini onaylayın."><span><a href="#kvkk" data-toast="KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metnini</a> okudum; bilgilerimin teklif hazırlamak için işlenmesini kabul ediyorum.</span></label></div>
+<div class="field full"><label class="check"><input type="checkbox" name="kvkk" required data-err="Devam etmek için aydınlatma metnini onaylayın."><span><a href="#kvkk" data-toast="Önizleme: KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metnini</a> okudum; bilgilerimin teklif hazırlamak için işlenmesini kabul ediyorum.</span></label></div>
 </div>
 <div class="wnav"><button type="button" class="btn line" data-prev>Geri</button><button type="button" class="btn" data-next>Keşif talebini ilet</button></div>
 </div>
@@ -146,7 +146,7 @@
 <div class="done-box">
 <p class="muted" style="margin:0">Talep numaranız</p>
 <p class="ref" data-s="ref">RS-2026-04817</p>
-<p><b data-s="bolge"></b> talebinizi aldı. Bölge müdürlüğümüz keşif için sizi arar.</p>
+<p><b data-s="bolge"></b> talebinizi aldı. Bölge müdürlüğümüz keşif için verdiğiniz telefondan size ulaşır.</p><p class="sim">Önizleme: gerçek talep oluşturulmadı.</p>
 <ul class="ticks">
 <li>Keşifte giriş noktaları ve risk analizi yerinde yapılır</li>
 <li>Kadro, hizmet seviyesi ve fiyat yazılı teklifle iletilir</li>
@@ -186,7 +186,7 @@
 <p><a href="tel:08508887377">0850 888 73 77</a><br><a href="mailto:info@resyonetim.com.tr">info@resyonetim.com.tr</a><br><a href="https://www.ressgroup.com.tr" rel="noopener">www.ressgroup.com.tr</a></p></div>
 </div>
 <div class="foot-bot"><span>© 2026 RESS Koruma ve Özel Güvenlik Hizmetleri Ltd. Şti.</span>
-<span><a href="#kvkk" data-toast="KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metni</a>&nbsp;&nbsp;&nbsp;<a href="#cerez" data-toast="Çerez politikası yayında bu bağlantıda açılacak.">Çerez politikası</a></span>
+<span><a href="#kvkk" data-toast="Önizleme: KVKK aydınlatma metni yayında bu bağlantıda açılacak.">KVKK aydınlatma metni</a>&nbsp;&nbsp;&nbsp;<a href="#cerez" data-toast="Önizleme: çerez politikası yayında bu bağlantıda açılacak.">Çerez politikası</a></span>
 <span class="credit">Tasarım önizlemesi: Webizmo</span></div>
 </div></footer>
 <button class="screens-btn" type="button" aria-expanded="false" aria-controls="screens">Ekranlar</button>

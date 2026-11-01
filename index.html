@@ -48,6 +48,7 @@ ol.steps li::marker{font-weight:800;color:var(--accent)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .note{background:var(--soft);border-radius:12px;padding:18px 20px;color:var(--ink);font-size:16px}
 .note ul{padding-left:20px;display:grid;gap:6px;margin-top:8px;color:var(--muted)}
+.rota{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.rota a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-weight:600;font-size:15px}.rota a:hover{border-color:var(--ink)}
 .pdf{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:10px;border:2px solid var(--ink);text-decoration:none;font-weight:700;margin-top:6px}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
 a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -59,14 +60,15 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offse
 <main class="wrap">
   <div class="intro">
     <h1>ressguvenlik.com için üç yeni yüz</h1>
-    <p>Sayım Bey, mevcut sitenizi, kataloglarınızı ve Ress Group'un kurumsal tanıtım metnini inceleyerek üç farklı web sitesi önerisi hazırladık. Her biri aynı on bir ekrandan oluşuyor: ana sayfa, hizmetler, hizmet detayı, kurumsal, referanslar, bölge müdürlükleri, teklif sihirbazı, kariyer, iletişim, müşteri portalı ve telefon görünümü. Hepsi tıklanabilir; telefonunuzdan da bilgisayarınızdan da gezebilirsiniz.</p>
+    <p>Sayım Bey, mevcut sitenizi, kataloglarınızı ve Ress Group'un kurumsal tanıtım metnini inceleyerek üç web sitesi önerisi hazırladık. Önerimiz Seçenek 1. Bir dakikanız varsa şu sırayla bakın: Seçenek 1'in açılışı, ardından Seçenek 2'deki kadro hesaplayıcı, son olarak Seçenek 3'teki müşteri portalı.</p>
+    <p class="rota"><a href="secenek-1/index.html">1. Gece Nöbeti açılışı</a><a href="secenek-2/index.html#kadro">2. Kadro hesaplayıcı</a><a href="secenek-3/musteri-portali.html">3. Müşteri portalı</a><a href="seo-raporu.html">Mevcut sitenin Google incelemesi</a></p>
   </div>
 
   <div class="opts">
     <article class="opt">
       <a class="shot" href="secenek-1/index.html"><img src="thumbs/secenek-1.jpg" alt="Seçenek 1 ana sayfa görünümü"></a>
       <div class="body">
-        <h2><small>Seçenek 1</small>Gece Nöbeti</h2>
+        <h2><small>Seçenek 1, önerimiz</small>Gece Nöbeti</h2>
         <p data-ozet="1">Sinematik ve koyu bir site. Açılışta yağmurlu bir gecede plaza girişinde nöbet tutan görevli; ana sayfadaki 24 saatlik nöbet çizelgesi, siz uyurken tesisinizde saat saat ne yapıldığını anlatıyor.</p>
         <div class="sw" aria-label="Renkler"><i style="background:#0F0E0E"></i><i style="background:#801618"></i><i style="background:#C2343A"></i><i style="background:#EDE8E3"></i></div>
         <div class="screens"><a href="secenek-1/hizmet-detay.html">Hizmet detayı</a><a href="secenek-1/teklif.html">Teklif sihirbazı</a><a href="secenek-1/musteri-portali.html">Müşteri portalı</a><a href="secenek-1/mobil.html">Telefonda</a></div>
@@ -101,13 +103,19 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offse
     <div class="diff">
       <div><b>Markanızın kendi renkleri</b><span>Logonuzdaki bordo ve antrasit, kataloglarınızla aynı görsel dil. Sitenin her köşesinde RESS'i hatırlatan tutarlı bir kimlik.</span></div>
       <div><b>Güncel ve tek iletişim bilgisi</b><span>0850 888 73 77, Esenyurt Sedai Plaza'daki genel müdürlük ve tek e-posta adresi her sayfada aynı.</span></div>
-      <div><b>Sahadan fotoğraf ve videolar</b><span>İstanbul'da ve Türkiye'de geçen gece plazası, şafakta vardiya brifingi, operasyon merkezi, liman, maden ve hastane sahneleri.</span></div>
+      <div><b>Sinematik fotoğraf ve videolar</b><span>İstanbul'da ve Türkiye'de geçen temsili sahneler: gece plazası, şafakta vardiya brifingi, liman, maden, hastane. Yayından önce kendi ekiplerinizin çekimleriyle değiştirmenizi öneririz; en güçlü kanıt gerçek ekibinizdir.</span></div>
       <div><b>Teklif getiren sihirbaz</b><span>Ziyaretçi tesis türünü, nokta sayısını ve çalışma saatlerini seçiyor; site önerilen kadroyu gösterip talebi bölge müdürlüğünüze iletiyor.</span></div>
       <div><b>Müşteri portalı</b><span>e-PMS ve Ress Dijital Nöbet hizmetlerinizin müşterinin göreceği yüzü: vardiya durumu, devriye turu, olay kayıtları, aylık rapor.</span></div>
       <div><b>Dijital asistan</b><span>Ress Group'un hazırladığı kurumsal tanıtım metnine göre konuşan asistan; teklif, iş başvurusu ve şikâyetleri kayıt altına alıp ilgili birime yönlendiriyor.</span></div>
       <div><b>Bölge müdürlükleri haritası</b><span>Sekiz bölge müdürlüğü ve genel müdürlük Türkiye haritasında; ziyaretçi kendine en yakın birimi tek dokunuşla buluyor.</span></div>
       <div><b>Arama motoruna hazır yapı</b><span>Her sayfanın içeriği Google'ın doğrudan okuyabileceği şekilde sayfada hazır; hizmet ve bölge sayfaları ayrı ayrı bulunabilir.</span></div>
     </div>
+  </section>
+
+  <section class="block">
+    <h2>Mevcut sitenizin Google incelemesi</h2>
+    <p class="lead">Yeni siteyi hazırlarken ressguvenlik.com'un arama motorundaki durumunu da ölçtük. Temel ayarlar yerinde; ama telefonda ana içerik 11,8 saniyede açılıyor (Google'ın önerisi 2,5 saniye), iletişim bilgileri sayfadan sayfaya değişiyor ve yapısal veri hiç yok. Sekiz bölge müdürlüğünüz için ayrı sayfalar ve iş ilanlarınızın Google'ın iş arama görünümüne girmesi en büyük fırsatlar.</p>
+    <a class="pdf" href="seo-raporu.html">İncelemenin tamamını açın</a>
   </section>
 
   <section class="block">
@@ -142,7 +150,7 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offse
       <b>Bilmeniz gerekenler</b>
       <ul>
         <li>Bu bir ön tasarımdır: ekranlar tıklanabilir, formlar ve asistan örnek akışla çalışır; gerçek kayıt oluşturmaz.</li>
-        <li>Fotoğraflar ve videolar temsilidir, yapay zekâ ile üretildi. İsterseniz kendi ekiplerinizin çekimleriyle değiştiririz.</li>
+        <li>Fotoğraflar ve videolar temsili sahnelerdir, yapay zekâ ile üretildi; görevlilerin üniformaları RESS üniforması değildir. Kendi ekiplerinizin çekimleriyle değiştiririz.</li>
         <li>Rakamlar (personel, müşteri, il sayısı) ve referans yorumları mevcut sitenizden alındı; yayından önce sizinle teyit edilir. Müşteri portalındaki tesis ve görevli adları örnektir.</li>
         <li>Bu adres geçicidir ve arama motorlarına kapalıdır; seçiminizden sonra kaldırılacaktır.</li>
       </ul>

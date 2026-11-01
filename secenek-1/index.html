@@ -56,12 +56,27 @@
   <button class="video-dugme" type="button">Videoyu durdur</button>
 </section>
 
+<section class="mini-kadro" aria-labelledby="mini-baslik">
+  <div class="kap mini-ic">
+    <div>
+      <h2 id="mini-baslik">Tesisiniz için kaç görevli?</h2>
+      <p class="mini-not">45 saat: İş Kanunu'na göre haftalık en çok çalışma süresi. Kesin kadro keşiften sonra belirlenir.</p>
+    </div>
+    <form class="mini-form" id="mini-kadro" action="teklif.html">
+      <div class="alan"><label for="mk-nokta">Nokta sayısı</label><input id="mk-nokta" name="nokta" type="number" min="1" max="40" value="1" inputmode="numeric"></div>
+      <div class="alan"><label for="mk-saat">Çalışma saatleri</label><select id="mk-saat" name="saat"><option value="7/24">7/24</option><option value="gunduz">Gündüz, 08:00–20:00</option><option value="gece">Gece, 20:00–08:00</option><option value="haftasonu">Yalnız hafta sonu</option></select></div>
+      <p class="mini-sonuc" aria-live="polite"><span class="veri" id="mk-ham">4,2</span> → <strong id="mk-sonuc">5 görevli</strong></p>
+      <button class="dugme dugme-ana" type="submit">Teklif sihirbazında devam et</button>
+    </form>
+  </div>
+</section>
+
 <section class="nobet bolum" id="nobet" aria-labelledby="nobet-baslik">
   <div class="kap">
     <div class="nobet-bas">
       <h2 id="nobet-baslik">Tesisinizde 24 saat</h2>
       <div>
-        <p>Sabah 08:00'den ertesi sabah 08:00'e kadar bir fabrikada nöbetin nasıl geçtiğini saat saat görün. Aşağı kaydırın ya da bir saate dokunun.</p>
+        <p>Sabah 08:00'den ertesi sabah 08:00'e kadar örnek bir fabrikada nöbetin nasıl geçtiğini saat saat görün. Aşağı kaydırın ya da bir saate dokunun.</p>
         <div class="saatler" role="group" aria-label="Saate git"><button type="button" aria-pressed="false">08:00</button><button type="button" aria-pressed="false">10:30</button><button type="button" aria-pressed="false">14:00</button><button type="button" aria-pressed="false">19:45</button><button type="button" aria-pressed="false">02:10</button><button type="button" aria-pressed="false">07:30</button></div>
       </div>
     </div>
@@ -72,69 +87,81 @@
         <div class="cizelge"><div class="cizelge-dolu"></div></div>
       </div>
       <ol class="anlar">
-      <li class="an" data-dk="0" id="saat-0800">
-        <figure><img src="../assets/img/vardiya-brifing.jpg" alt="Şafakta fabrika kapısında vardiya amiri yedi kişilik ekibe brifing veriyor" loading="lazy" decoding="async"></figure>
-        <div>
+      <li class="an an-anahtar" data-dk="0" id="saat-0800">
+        <figure><img src="../assets/img/vardiya-brifing.jpg" alt="Temsili fotoğraf: şafakta fabrika kapısında vardiya brifingi" width="1500" height="836" loading="eager" fetchpriority="high" decoding="async"></figure>
+        <div class="an-metin">
           <time class="an-saat">08:00</time>
-          <h3>Vardiya devri ve brifing</h3>
-          <p>Gece ekibi nöbet defterini gündüz ekibine teslim eder. Vardiya amiri günün ziyaretçi listesini, açık talepleri ve gece yaşananları on dakikalık brifingde ekibe anlatır.</p>
-          <span class="kayit">Vardiya devri kaydı: 08:04, 7/7 görevli hazır</span>
+          <div>
+            <h3>Vardiya devri ve brifing</h3>
+            <p class="an-ozet">Gece ekibi nöbet defterini gündüz ekibine teslim eder.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Vardiya amiri günün ziyaretçi listesini, açık talepleri ve gece yaşananları kısa bir brifingde ekibe anlatır. Kapanmamış her kayıt devir defterine işlenir.</p><span class="kayit">Devir kaydı 08:04: 3 nokta teslim alındı</span></details>
+          </div>
         </div>
       </li>
       <li class="an" data-dk="150" id="saat-1030">
-        <figure><img src="../assets/img/plaza-resepsiyon.jpg" alt="Plaza resepsiyonunda özel güvenlik görevlisi bir ziyaretçiyi karşılıyor" loading="lazy" decoding="async"></figure>
-        <div>
+        <figure class="an-ikincil"><img src="../assets/img/plaza-resepsiyon.jpg" alt="Temsili fotoğraf: resepsiyonda ziyaretçi karşılama" width="1500" height="1006" loading="eager" fetchpriority="high" decoding="async"></figure>
+        <div class="an-metin">
           <time class="an-saat">10:30</time>
-          <h3>Ziyaretçi kaydı</h3>
-          <p>Her ziyaretçi kimlik ve randevu kontrolünden geçer, kaydı dijital deftere düşer. Kim, kimi görmeye, saat kaçta geldi; ay sonunda tek tabloda önünüzde olur.</p>
-          <span class="kayit">Bugün 10:30'a kadar 46 ziyaretçi kaydı</span>
+          <div>
+            <h3>Ziyaretçi kaydı</h3>
+            <p class="an-ozet">Her ziyaretçi kimlik ve randevu kontrolünden geçer.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Kayıt dijital deftere düşer. Kim, kimi görmeye, saat kaçta geldi; ay sonunda tek tabloda önünüzde olur.</p><span class="kayit">10:30'a kadar 46 ziyaretçi kaydı</span></details>
+          </div>
         </div>
       </li>
       <li class="an" data-dk="360" id="saat-1400">
-        <figure><img src="../assets/img/hesap-yoneticisi.jpg" alt="Ress hesap yöneticisi tesis yöneticisiyle sahada görüşüyor" loading="lazy" decoding="async"></figure>
-        <div>
+        <figure class="an-ikincil"><img src="../assets/img/hesap-yoneticisi.jpg" alt="Temsili fotoğraf: hesap yöneticisi ile tesis yöneticisi görüşmesi" width="1500" height="1006" loading="lazy" decoding="async"></figure>
+        <div class="an-metin">
           <time class="an-saat">14:00</time>
-          <h3>Saha denetimi ve müşteri görüşmesi</h3>
-          <p>Bölge müdürlüğünden denetçi habersiz gelir; kıyafeti, kart geçerliliğini ve nöbet defterini kontrol eder. Hesap yöneticiniz aynı gün tesis yöneticinizle ayın gündemini konuşur.</p>
-          <span class="kayit">Denetim formu D-1102: 12 madde, eksik yok</span>
+          <div>
+            <h3>Saha denetimi ve müşteri görüşmesi</h3>
+            <p class="an-ozet">Bölge müdürlüğünden denetçi sahaya gelir.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Denetçi kıyafeti, kart geçerliliğini ve nöbet defterini kontrol eder. Hesap yöneticiniz tesis yöneticinizle açık konuları konuşur.</p><span class="kayit">Denetim formu D-1031: 12 madde, eksik yok</span></details>
+          </div>
         </div>
       </li>
       <li class="an" data-dk="705" id="saat-1945">
-        <figure><img src="../assets/img/fabrika-guvenlik.jpg" alt="Akşamüstü fabrika kapısında görevli el feneriyle tır kontrol ediyor" loading="lazy" decoding="async"></figure>
-        <div>
+        <figure class="an-ikincil"><img src="../assets/img/fabrika-guvenlik.jpg" alt="Temsili fotoğraf: akşamüstü fabrika kapısında araç kontrolü" width="1500" height="1006" loading="lazy" decoding="async"></figure>
+        <div class="an-metin">
           <time class="an-saat">19:45</time>
-          <h3>Hava kararırken çevre kontrolü</h3>
-          <p>Gündüz ekibi çekilmeden önce çevre hattı, kapılar ve aydınlatma tek tek kontrol edilir. Son sevkiyat aracı mühür numarasıyla kayda geçer, kantar kapanır.</p>
-          <span class="kayit">Son araç çıkışı 19:38, mühür no kayıtlı</span>
+          <div>
+            <h3>Hava kararırken çevre kontrolü</h3>
+            <p class="an-ozet">Çevre hattı, kapılar ve aydınlatma tek tek kontrol edilir.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Son sevkiyat aracı mühür numarasıyla kayda geçer, kantar kapanır. Aydınlatma eksiği varsa tutanakla bildirilir.</p><span class="kayit">Son araç çıkışı 19:38, mühür no kayıtlı</span></details>
+          </div>
         </div>
       </li>
-      <li class="an" data-dk="1090" id="saat-0210">
-        <figure><img src="../assets/img/dijital-nobet-nfc.jpg" alt="Gece devriyesinde görevli telefonunu duvardaki NFC kontrol noktasına okutuyor" loading="lazy" decoding="async"></figure>
-        <div>
+      <li class="an an-anahtar" data-dk="1090" id="saat-0210">
+        <figure><img src="../assets/img/dijital-nobet-nfc.jpg" alt="Temsili fotoğraf: gece devriyesinde NFC kontrol noktası okutma" width="1500" height="1006" loading="lazy" decoding="async"></figure>
+        <div class="an-metin">
           <time class="an-saat">02:10</time>
-          <h3>Devriye turu ve olay tutanağı</h3>
-          <p>Görevli her kontrol noktasında telefonunu etikete okutur; saat ve konum kayda geçer. Arka kapı açık bulundu: kapatıldı, fotoğraflandı, tutanak dört dakikada hazırdı.</p>
-          <span class="kayit">Tutanak RDN-0412: 02:10 arka kapı, kapatıldı</span>
+          <div>
+            <h3>Devriye turu ve olay tutanağı</h3>
+            <p class="an-ozet">Arka kapı açık bulundu: kapatıldı, fotoğraflandı, tutanağı yazıldı.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Görevli her kontrol noktasında telefonunu etikete okutur; saat ve konum kayda geçer. Olay tutanağı vardiya amirince onaylanır ve tesis sorumlusuna 02:16'da bildirilir.</p><span class="kayit">Tutanak RDN-0412: 02:10 arka kapı, kapatıldı, bildirildi</span></details>
+          </div>
         </div>
       </li>
-      <li class="an" data-dk="1410" id="saat-0730">
+      <li class="an an-anahtar" data-dk="1410" id="saat-0730">
         <div class="telefon-rapor">
   <div class="tel-kasa" aria-label="Örnek sabah raporu">
     <div class="tel-ust"><span>07:30</span><span>Ress Müşteri</span></div>
-    <strong>Gece raporu</strong>
+    <strong>Gece raporu, 1 Kasım</strong>
     <span class="ikincil" style="font-size:.85rem">Gebze Üretim Tesisi, 3 nokta</span>
     <div class="satir" style="margin-top:12px"><span>Devriye turu</span><span class="ok">14/16</span></div>
-    <div class="satir"><span>Nokta</span><span>3/3 dolu</span></div>
+    <div class="satir"><span>Bakımda, onaylı</span><span>2 nokta</span></div>
     <div class="satir"><span>Olay</span><span>1 tutanak</span></div>
     <div class="satir"><span>02:10 arka kapı</span><span>kapatıldı</span></div>
     <a class="dugme dugme-ana" href="musteri-portali.html">Raporu aç</a>
   </div>
 </div>
-        <div>
+        <div class="an-metin">
           <time class="an-saat">07:30</time>
-          <h3>Sabah raporu telefonunuzda</h3>
-          <p>Siz işe çıkmadan gecenin özeti telefonunuzdadır: kaç tur atıldı, hangi noktalar okundu, ne oldu ve ne yapıldı. Ayrıntı ve tutanaklar müşteri portalında.</p>
-          <a class="dugme dugme-cizgi" href="musteri-portali.html" style="margin-top:8px">Örnek müşteri panelini aç</a>
+          <div>
+            <h3>Sabah raporu telefonunuzda</h3>
+            <p class="an-ozet">Gecenin özeti siz işe çıkmadan telefonunuzdadır.</p>
+            <details class="an-detay"><summary>Ayrıntı</summary><p>Kaç tur atıldı, hangi noktalar okundu, ne oldu ve ne yapıldı. 02:10 olayı 08:00 vardiya devrinde deftere işlenir ve kapatılır; tutanak müşteri portalında.</p><a class="dugme dugme-cizgi" href="musteri-portali.html">Örnek müşteri panelini aç</a></details>
+          </div>
         </div>
       </li>
       </ol>
@@ -149,12 +176,12 @@
       <p>Her tesisin riski farklıdır: fabrikada sevkiyat ve kantar, hastanede acil girişi, sitede misafir trafiği. Kadroyu ve görev talimatını tesisinize göre yazıyoruz.</p>
     </div>
     <div class="tesisler">
-      <a class="tesis t-buyuk" href="hizmet-detay.html"><img src="../assets/img/fabrika-guvenlik.jpg" alt="Fabrika kapısında görevli tır kontrol ediyor" loading="lazy" decoding="async"><div class="ad"><h3>Fabrika ve sanayi</h3><span>Kapı, kantar, sevkiyat ve çevre devriyesi</span></div></a>
-      <a class="tesis t-orta" href="hizmetler.html?sektor=kurumsal"><img src="../assets/img/plaza-resepsiyon.jpg" alt="Plaza resepsiyonunda güvenlik görevlisi" loading="lazy" decoding="async"><div class="ad"><h3>Plaza ve iş merkezi</h3><span>Resepsiyon, ziyaretçi kaydı, kat devriyesi</span></div></a>
-      <a class="tesis t-orta" href="hizmetler.html?sektor=saglik"><img src="../assets/img/hastane-guvenlik.jpg" alt="Hastane girişinde güvenlik görevlisi" loading="lazy" decoding="async"><div class="ad"><h3>Hastane</h3><span>Acil giriş düzeni ve ziyaretçi kontrolü</span></div></a>
-      <a class="tesis t-kucuk" href="hizmetler.html?sektor=konut"><img src="../assets/img/site-guvenlik.jpg" alt="Site girişinde güvenlik kulübesi" loading="lazy" decoding="async"><div class="ad"><h3>Site ve rezidans</h3></div></a>
-      <a class="tesis t-kucuk" href="hizmetler.html?sektor=perakende"><img src="../assets/img/avm-guvenlik.jpg" alt="AVM içinde güvenlik görevlisi" loading="lazy" decoding="async"><div class="ad"><h3>AVM ve mağaza</h3></div></a>
-      <a class="tesis t-kucuk" href="hizmetler.html?sektor=liman"><img src="../assets/img/marina-guvenlik.jpg" alt="Marinada gece devriyesi" loading="lazy" decoding="async"><div class="ad"><h3>Marina ve liman</h3></div></a>
+      <a class="tesis t-buyuk" href="hizmet-detay.html"><img src="../assets/img/fabrika-guvenlik.jpg" alt="Temsili fotoğraf: fabrika kapısında tır kontrolü" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>Fabrika ve sanayi</h3><span>Kapı, kantar, sevkiyat ve çevre devriyesi</span></div></a>
+      <a class="tesis t-orta" href="hizmetler.html?sektor=kurumsal"><img src="../assets/img/plaza-resepsiyon.jpg" alt="Temsili fotoğraf: plaza resepsiyonu" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>Plaza ve iş merkezi</h3><span>Resepsiyon, ziyaretçi kaydı, kat devriyesi</span></div></a>
+      <a class="tesis t-orta" href="hizmetler.html?sektor=saglik"><img src="../assets/img/hastane-guvenlik.jpg" alt="Temsili fotoğraf: hastane girişi" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>Hastane</h3><span>Acil giriş düzeni ve ziyaretçi kontrolü</span></div></a>
+      <a class="tesis t-kucuk" href="hizmetler.html?sektor=konut"><img src="../assets/img/site-guvenlik.jpg" alt="Site girişinde güvenlik kulübesi" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>Site ve rezidans</h3></div></a>
+      <a class="tesis t-kucuk" href="hizmetler.html?sektor=perakende"><img src="../assets/img/avm-guvenlik.jpg" alt="AVM içinde güvenlik görevlisi" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>AVM ve mağaza</h3></div></a>
+      <a class="tesis t-kucuk" href="hizmetler.html?sektor=liman"><img src="../assets/img/marina-guvenlik.jpg" alt="Marinada gece devriyesi" width="1500" height="1006" loading="lazy" decoding="async"><div class="ad"><h3>Marina ve liman</h3></div></a>
     </div>
     <p style="margin-top:28px"><a href="hizmetler.html">Tüm hizmetleri ve sektörleri görün</a></p>
   </div>
@@ -169,15 +196,16 @@
     </div>
     <dl class="kanit-liste">
       <div><dt>5188</dt><dd>Özel Güvenlik Hizmetlerine Dair Kanun kapsamında İçişleri Bakanlığı faaliyet izni. Belgemizi talep üzerine paylaşıyoruz.</dd></div>
-      <div><dt>500+</dt><dd>Görevlinin tamamı Özel Güvenlik Kimlik Kartı (ÖGKK) sahibi; kart geçerlilik tarihleri sizin portalınızda.</dd></div>
-      <div><dt>7/24</dt><dd>Nöbet, devriye ve olay tutanağı Ress Dijital Nöbet (RDN) üzerinden kayda geçer; raporu siz de görürsünüz.</dd></div>
-      <div><dt>1 kişi</dt><dd>Her tesise atanmış bir hesap yöneticisi. Talebiniz bir çağrı merkezinde değil, onun masasında.</dd></div>
-      <div><dt>8 bölge</dt><dd>İstanbul genel müdürlüğü ve sekiz bölge müdürlüğüyle Türkiye geneline yayılan şube ağlarına aynı standart.</dd></div>
+      <div><dt>500+</dt><dd>Lisanslı personel; görevlilerin tamamı Özel Güvenlik Kimlik Kartı (ÖGKK) sahibi.</dd></div>
+      <div><dt>7/24</dt><dd>Kesintisiz hizmet ve şeffaf raporlama: nöbet, devriye ve olay tutanağı Ress Dijital Nöbet (RDN) ile kayda geçer.</dd></div>
+      <div><dt>1 kişi</dt><dd>Her müşteriye atanmış bir hesap yöneticisi; talepleriniz tek kişide toplanır.</dd></div>
+      <div><dt>24–48 saat</dt><dd>Acil personel ihtiyacında 24–48 saat içinde görevli sağlanır.</dd></div>
+      <div><dt>8 bölge</dt><dd>İstanbul genel müdürlüğü ve sekiz bölge müdürlüğüyle 81 ilde hizmet kapasitesi.</dd></div>
     </dl>
   </div>
 </section>
 
-<section class="bolum" aria-labelledby="baslangic-baslik">
+<section class="bolum yuzey-acik" aria-labelledby="baslangic-baslik">
   <div class="kap">
     <div class="bas-iki">
       <h2 id="baslangic-baslik">İlk telefondan ilk nöbete</h2>
@@ -190,12 +218,12 @@
       <li><span class="no">4</span><h3>Teklif</h3><p>Kadro, vardiya ve hizmet modeli yazılı gelir.</p></li>
       <li><span class="no">5</span><h3>Sözleşme</h3><p>Görev talimatı sözleşmenin ekidir.</p></li>
       <li><span class="no">6</span><h3>Yerleştirme</h3><p>Görevliler tesis eğitimiyle başlar.</p></li>
-      <li><span class="no">7</span><h3>Denetim</h3><p>Habersiz saha denetimi ve aylık rapor.</p></li>
+      <li><span class="no">7</span><h3>Denetim</h3><p>Saha denetimi ve aylık rapor.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="bolum" aria-labelledby="ref-baslik" style="background:var(--yuzey)">
+<section class="bolum yuzey" aria-labelledby="ref-baslik">
   <div class="kap ref-duzen">
     <div>
       <h2 id="ref-baslik" class="gizli">Referanslar</h2>
@@ -211,9 +239,9 @@
         <li>Kim Market <span>150 şube</span></li>
         <li>Onur Market <span>40 şube</span></li>
         <li>Kolan Hastaneleri <span>2 hastane</span></li>
-        <li>Medilife <span>Sağlık</span></li>
+        <li>Medilife <span></span></li>
         <li>Ege Yapı <span>Türkiye geneli</span></li>
-        <li>Kaya Holding <span>Kurumsal</span></li>
+        <li>Kaya Holding <span></span></li>
       </ul>
     </div>
   </div>
@@ -223,10 +251,10 @@
   <div class="kap">
     <div class="bas-iki">
       <h2 id="bolge-baslik">Esenyurt'tan Doğubayazıt'a</h2>
-      <p>Genel müdürlüğümüz İstanbul Esenyurt'ta. Sekiz bölge müdürlüğü, kendi bölgesindeki tesisleri yakından denetler; çok şubeli kurumlar tek sözleşmeyle çalışır.</p>
+      <p>Genel müdürlüğümüz İstanbul Esenyurt'ta. Sekiz bölge müdürlüğü, kendi bölgesindeki tesislerin keşfini ve denetimini yapar.</p>
     </div>
   </div>
-  <figure class="panorama tam-genislik" style="margin-top:0;margin-bottom:0"><img src="../assets/img/istanbul-bati-panorama.jpg" alt="Mavi saatte Beylikdüzü ve Esenyurt'un havadan görünümü" loading="lazy" decoding="async"></figure>
+  <figure class="panorama tam-genislik" style="margin-top:0;margin-bottom:0"><img src="../assets/img/istanbul-bati-panorama.jpg" alt="Temsili fotoğraf: mavi saatte İstanbul batısı" width="1500" height="636" loading="lazy" decoding="async"></figure>
   <div class="kap">
     <nav class="bolge-satirlar" aria-label="Bölge müdürlükleri">
       <a href="bolgeler.html?bolge=gm"><span>Genel Müdürlük</span><span>İstanbul</span></a>
@@ -255,11 +283,11 @@
 <section class="bolum" aria-labelledby="kariyer-baslik">
   <div class="kap iki iki-ters">
     <div>
-      <h2 id="kariyer-baslik">Kartınız varsa yeriniz hazır</h2>
-      <p class="giris-metin" style="margin-top:20px">ÖGKK sahibi görevliler için İstanbul, Gebze ve Ambarlı'da açık pozisyonlarımız var. Maaş her ay aynı gün, sigorta ilk günden. Görevlilikten vardiya amirliğine, oradan proje müdürlüğüne giden yol açık.</p>
+      <h2 id="kariyer-baslik">Nöbete bizimle başlayın</h2>
+      <p class="giris-metin" style="margin-top:20px">ÖGKK sahibi görevliler için örnek ilanlar İstanbul, Gebze ve Ambarlı'da. Görevlilikten vardiya amirliğine, oradan proje müdürlüğüne uzanan bir kariyer yolu.</p>
       <div class="dugmeler" style="margin-top:28px"><a class="dugme dugme-ana" href="kariyer.html#basvuru">Başvuru formunu doldur</a><a class="dugme dugme-cizgi" href="kariyer.html">Açık pozisyonlar</a></div>
     </div>
-    <figure class="portre"><img src="../assets/img/kariyer-kadin-gorevli.jpg" alt="Ress üniformalı kadın özel güvenlik görevlisi" loading="lazy" decoding="async"></figure>
+    <figure class="portre"><img src="../assets/img/kariyer-kadin-gorevli.jpg" alt="Temsili fotoğraf: kadın özel güvenlik görevlisi" width="1006" height="1500" loading="lazy" decoding="async"></figure>
   </div>
 </section>
 

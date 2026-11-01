@@ -45,6 +45,12 @@
     if (e.key === "Escape") { if (spop) spop.classList.remove("on"); setMenu(false); closeAst(); }
   });
 
+  /* Soru-cevap: telefonda açılır kapanır */
+  if (window.matchMedia && matchMedia("(max-width: 760px)").matches) $$(".qa-item").forEach(function (d) { d.open = false; });
+  $$(".qa-item summary").forEach(function (sm) {
+    sm.addEventListener("click", function (e) { if (!(window.matchMedia && matchMedia("(max-width: 760px)").matches)) e.preventDefault(); });
+  });
+
   /* ---------- Bölgeler ---------- */
   var REG = {
     gm: { ad: "Genel Müdürlük", sehir: "İstanbul, Esenyurt", adres: "Talatpaşa Mah. Pazaryolu Cad. No:2 Sedai Plaza Kat:7 Daire:73 Esenyurt / İstanbul", iller: ["İstanbul", "Tekirdağ", "Edirne", "Kırklareli"] },
@@ -98,20 +104,21 @@
     santiye: { ad: "şantiye", not: "Şantiyelerde malzeme sahası için gece devriyesi ya da drone gözetimi önerilir." },
     okul: { ad: "okul ve kampüs", not: "Okullarda giriş ve çıkış saatlerinde ek görevli keşifte planlanır." }
   };
-  var SAAT = { "724": { h: 168, ad: "7/24", duzen: "3 vardiya × 8 saat" }, gunduz: { h: 84, ad: "Gündüz 08–20", duzen: "2 dönüşümlü ekip × 12 saat" }, gece: { h: 84, ad: "Gece 20–08", duzen: "2 dönüşümlü ekip × 12 saat" } };
+  var SAAT = { "724": { h: 168, ad: "7/24", duzen: "3 vardiya × 8 saat" }, gunduz: { h: 84, ad: "Gündüz 08–20", duzen: "2 dönüşümlü ekip × 12 saat" }, gece: { h: 84, ad: "Gece 20–08", duzen: "2 dönüşümlü ekip × 12 saat" }, haftasonu: { h: 48, ad: "Yalnız hafta sonu", duzen: "Cumartesi ve pazar, 2 vardiya × 12 saat" } };
   function fmt(n) { return n.toLocaleString("tr-TR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
   function kadro(tur, nokta, saat, silah, extraPosts) {
     var s = SAAT[saat] || SAAT["724"];
     var posts = nokta + (extraPosts || 0);
     var hours = s.h * posts;
-    var ham = hours / 45, pay = ham * 0.12, top = ham + pay;
-    var lo = Math.max(1, Math.floor(top)), hi = Math.max(1, Math.ceil(top));
-    var amir = (saat === "724" && hi >= 6) ? Math.ceil(hi / 14) : 0;
+    var ham = hours / 45, top = ham * 1.12;
+    var n = Math.max(1, Math.ceil(top - 1e-9));
+    var amir = (saat === "724" && n >= 6) ? 1 : 0;
     return {
-      hours: hours, ham: ham, pay: pay, top: top, lo: lo, hi: hi, amir: amir, s: s,
-      text: (lo === hi ? lo : lo + "–" + hi) + " görevli",
-      amirText: amir ? "+ " + amir + " vardiya amiri" : "Vardiya amirliği bölge müdürlüğünden",
-      not: (TUR[tur] || TUR.fabrika).not + " Haftada " + hours + " saat ÷ 45 saat yasal çalışma süresi, izin ve tatil payıyla hesaplanmıştır." +
+      hours: hours, ham: ham, top: top, n: n, amir: amir, s: s,
+      text: n + " görevli",
+      calc: fmt(top) + " → " + n + " görevli",
+      amirText: amir ? "+ 1 vardiya amiri" : "Vardiya amiri gerekmez",
+      not: (TUR[tur] || TUR.fabrika).not + " 45 saat: İş Kanunu'na göre haftalık en çok çalışma süresi. Kesin kadro keşiften sonra belirlenir." +
         (silah === "1" ? " Silahlı görevde kadro sayısı değişmez; görevlilerde silahlı ÖGKK ve valilik silah izni gerekir." : "")
     };
   }
@@ -128,11 +135,11 @@
       var silah = $('input[name="silah"]:checked', calc).value;
       var r = kadro(tur, n, saat, silah);
       o("baslik").textContent = r.s.ad + ", " + n + " nokta, " + TUR[tur].ad + (silah === "1" ? ", silahlı" : "");
-      o("kadro").textContent = r.text; o("kadro2").textContent = r.text;
+      o("kadro").textContent = r.text; o("kadro2").textContent = r.calc;
       o("amir").textContent = r.amirText;
       o("saat").textContent = r.hours + " saat";
       o("ham").textContent = fmt(r.ham) + " görevli";
-      o("pay").textContent = "+" + fmt(r.pay) + " görevli";
+      o("pay").textContent = fmt(r.top) + " görevli";
       o("duzen").textContent = r.s.duzen;
       o("not").textContent = r.not;
       o("link").href = "teklif.html?tur=" + tur + "&nokta=" + n + "&saat=" + saat + "&silah=" + silah + "&adim=2";
@@ -178,7 +185,7 @@
       set("duzen", n + " nokta, " + r.s.ad + ", " + (silah === "1" ? "silahlı" : "silahsız"));
       set("ek", ek.length ? ek.map(function (k) { return EK[k]; }).join(", ") : "Yok");
       set("kadro", r.text); set("amir", r.amirText); set("vardiya", r.s.duzen);
-      set("hesap", "Haftada " + r.hours + " saat ÷ 45 saat = " + fmt(r.ham) + ", izin ve tatil payı +" + fmt(r.pay));
+      set("hesap", "Haftada " + r.hours + " saat ÷ 45 × 1,12 = " + r.calc);
       set("not", r.not);
       var bn = $("[data-bolgenot]", f); if (bn) bn.textContent = il ? il + " ili " + REG[regOfIl(il)].ad + " sorumluluğundadır. Keşif bu bölgenin ekibiyle yapılır." : "";
     };
@@ -249,7 +256,7 @@
       s1.hidden = true; s2.hidden = false; var first = $(".otp input", lg); if (first) first.focus();
     });
     $$(".otp input", lg).forEach(function (i, k, all) { i.addEventListener("input", function () { if (i.value && all[k + 1]) all[k + 1].focus(); }); });
-    $("[data-enter]", lg).addEventListener("click", function () { location.hash = "panel"; var p = $("#panel"); if (p) p.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); toast("Giriş yapıldı: Gebze Üretim Tesisi"); });
+    $("[data-enter]", lg).addEventListener("click", function () { location.hash = "panel"; var p = $("#panel"); if (p) p.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); toast("Önizleme: gerçek giriş yapılmadı; örnek tesis gösteriliyor."); });
   }
   $$("[data-tab]").forEach(function (b) {
     b.addEventListener("click", function () { toast(b.getAttribute("data-tab")); });
@@ -292,12 +299,15 @@
       add("bot", "Hangi tür tesis için güvenlik hizmeti arıyorsunuz?");
       var next = function (t) { return function () {
         add("bot", t + " için kaç nokta ve hangi saatlerde görevli gerekiyor?");
-        opts([["1 nokta, 7/24", fin("1 nokta 7/24: yaklaşık 4–5 görevli")], ["2–3 nokta, 7/24", fin("2–3 nokta 7/24: yaklaşık 8–13 görevli ve 1 vardiya amiri")], ["Yalnız gece", fin("Gece nöbeti: nokta başına yaklaşık 2–3 görevli")], ["Bilmiyorum, keşifte belirlensin", fin("Kadro keşifte belirlenecek")]]);
+        opts([["1 nokta, 7/24", fin("1 nokta 7/24: 168 ÷ 45 × 1,12 = 4,2 → 5 görevli")], ["2 nokta, 7/24", fin("2 nokta 7/24: 8,4 → 9 görevli ve 1 vardiya amiri")], ["1 nokta, yalnız gece", fin("1 nokta gece: 84 ÷ 45 × 1,12 = 2,1 → 3 görevli")], ["Bilmiyorum, keşifte belirlensin", fin("Kadro keşifte belirlenecek")]]);
       }; };
       var fin = function (k) { return function () {
-        add("bot", "Ön hesap: " + k + ". Talebinizi bölge müdürlüğüne ilettim, kayıt numaranız <b>" + ref("RS") + "</b>. Keşif için sizi arayacaklar; fiyat keşiften sonra yazılı teklifle verilir.");
-        add("bot", 'Daha ayrıntılı bilgi vermek isterseniz <a href="teklif.html">teklif sihirbazını</a> açabilirsiniz.');
-        opts([["Başka bir konu", FLOW.menu]]);
+        add("bot", "Ön hesap: " + k + ". Kesin kadro keşiften sonra belirlenir. Keşif için bölge müdürlüğümüzün size ulaşabilmesi için adınızı ve telefonunuzu yazar mısınız?");
+        askContact(function () {
+          add("bot", "Teşekkürler. Talebinizi bölge müdürlüğüne ilettim, kayıt numaranız <b>" + ref("RS") + "</b>. Fiyat keşiften sonra yazılı teklifle verilir." + SIM);
+          add("bot", 'Daha ayrıntılı bilgi vermek isterseniz <a href="teklif.html">teklif sihirbazını</a> açabilirsiniz.');
+          opts([["Başka bir konu", FLOW.menu]]);
+        });
       }; };
       opts([["Fabrika / sanayi", next("Fabrika")], ["Hastane", next("Hastane")], ["AVM / mağaza", next("AVM")], ["Site / rezidans", next("Site")], ["Diğer", next("Tesisiniz")]]);
     },
@@ -310,8 +320,11 @@
         }
         add("bot", durum === "az" ? "Kartınızın süresi dolmadan yenileme eğitimine katılmanız gerekir; başvurunuzu yine de alıyorum. Hangi ilde çalışmak istersiniz?" : "Hangi ilde çalışmak istersiniz?");
         var son = function (x) { return function () {
-          add("bot", x + " için başvuru kaydınızı açtım: <b>" + ref("BSV") + "</b>. İnsan kaynakları ekibimiz sizi arayacak. Bilgilerinizi tamamlamak için <a href=\"kariyer.html#basvuru\">başvuru formunu</a> doldurabilirsiniz.");
-          opts([["Başka bir konu", FLOW.menu]]);
+          add("bot", x + " için başvuru açabilirim. Adınızı ve telefonunuzu yazar mısınız?");
+          askContact(function () {
+            add("bot", "Başvuru kaydınızı açtım: <b>" + ref("BSV") + "</b>. İnsan kaynakları ekibimiz verdiğiniz numaradan size ulaşacak. Bilgilerinizi tamamlamak için <a href=\"kariyer.html#basvuru\">başvuru formunu</a> doldurabilirsiniz." + SIM);
+            opts([["Başka bir konu", FLOW.menu]]);
+          });
         }; };
         opts([["İstanbul", son("İstanbul")], ["Kocaeli", son("Kocaeli")], ["Ankara", son("Ankara")], ["İzmir", son("İzmir")], ["Başka bir il", son("Seçtiğiniz il")]]);
       }; };
@@ -331,8 +344,11 @@
       var t = function (k) { return function () {
         add("bot", "Kısaca yazar mısınız? Hizmet aldığınız tesisin adını da eklerseniz ilgili bölgeye doğrudan iletirim.");
         pending = function (txt) {
-          add("bot", "Kaydınız alındı: <b>" + ref("SKY") + "</b>. " + k + " başlığıyla ilgili bölge müdürlüğüne ve kalite birimine iletildi; size dönüş yapılacak.");
-          opts([["Başka bir konu", FLOW.menu]]);
+          add("bot", "Size dönüş yapabilmemiz için adınızı ve telefonunuzu yazar mısınız?");
+          askContact(function () {
+            add("bot", "Kaydınız alındı: <b>" + ref("SKY") + "</b>. " + k + " başlığıyla ilgili bölge müdürlüğüne iletildi; verdiğiniz numaradan size dönüş yapılacak." + SIM);
+            opts([["Başka bir konu", FLOW.menu]]);
+          });
         };
       }; };
       opts([["Hizmet aldığım tesisle ilgili", t("Hizmet")], ["Görevli davranışı", t("Görevli davranışı")], ["Öneri", t("Öneri")]]);
@@ -343,6 +359,14 @@
     }
   };
   var pending = null, started = false;
+  var SIM = '<span class="sim">Önizleme: gerçek talep oluşturulmadı.</span>';
+  function askContact(done) {
+    var w = document.createElement("div"); w.className = "opts";
+    var b = document.createElement("button"); b.type = "button"; b.textContent = "Örnek bilgiyle doldur: Ahmet Y., 0532 *** ** 18";
+    b.addEventListener("click", function () { w.remove(); pending = null; add("me", "Ahmet Yılmaz, 0532 *** ** 18"); setTimeout(done, reduce ? 0 : 350); });
+    w.appendChild(b); log.appendChild(w); log.scrollTop = log.scrollHeight;
+    pending = function () { w.remove(); done(); };
+  }
   function openAst() {
     if (!ast) return;
     ast.classList.add("on"); astBtn.setAttribute("aria-expanded", "true");
