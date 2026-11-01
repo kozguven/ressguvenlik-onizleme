@@ -671,3 +671,4 @@ body.cerceve .ekranlar-dug,body.cerceve .ekranlar-pan,body.cerceve .asistan-fab{
 /* telefonda yatay kaydırma yok: süzgeç ve portal sekmeleri satıra sarılır */
 .cipler{flex-wrap:wrap;overflow:visible;margin:0 0 18px;padding:0}
 @media(max-width:999px){.portal-nav{flex-wrap:wrap;overflow:visible}.portal-nav button{padding:8px 12px}}
+.talep-satir>.durum{align-self:start}

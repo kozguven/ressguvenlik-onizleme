@@ -595,7 +595,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   @page{size:A4 landscape;margin:10mm}
   html,body{background:#0F0E0E}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .ekranlar,.asistan-dugme,.asistan,.ust,.alt-bilgi,.mobil-giris{display:none!important}
+  html:not(.onizleme) .ekranlar,html:not(.onizleme) .asistan-dugme,html:not(.onizleme) .asistan,html:not(.onizleme) .ust,html:not(.onizleme) .alt-bilgi,.mobil-giris{display:none!important}
+  .onizleme .ekranlar{display:none!important}
   .telefonlar{grid-template-columns:repeat(4,1fr);gap:8mm 4mm}
   .tel-cerceve:nth-child(4n){break-after:page}
   .tel-govde{transform:scale(.82);transform-origin:top center;margin-bottom:-110px}
