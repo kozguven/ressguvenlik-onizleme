@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hizmetler | RESS Koruma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sayfa="hizmetler">
+<header id="ust"></header>
+<main>
+<section class="sayfa-bas">
+  <div class="kap">
+    <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>Hizmetler</li></ol>
+    <h1>Tesisinize göre güvenlik</h1>
+    <p>13 hizmet kolu ve 6 tamamlayıcı hizmet. Hangisini seçerseniz seçin, nöbet dijital olarak kayda geçer.</p>
+  </div>
+</section>
+
+<section class="bolum" style="padding-top:40px">
+  <div class="kap">
+    <h2 style="font-size:1.5rem">Her hizmetin altında çalışan iki sistem</h2>
+    <p class="ikincil">Ress’in kendi geliştirdiği bu iki ürün, aşağıdaki tüm hizmetlerde standart olarak kullanılır.</p>
+    <div class="urun-ikili">
+      <a class="urun" href="musteri-portali.html">
+        <img src="../assets/img/dijital-nobet-nfc.jpg" alt="" loading="lazy">
+        <div class="ic">
+          <span class="kisa">RDN</span>
+          <h3>Ress Dijital Nöbet</h3>
+          <p>Görevli kontrol noktasına telefonunu okutur; saat, konum ve fotoğraf portalınıza düşer. Olay tutanağı kâğıtta değil, kayıt numarasıyla sistemde.</p>
+          <span class="metin-link" style="color:#fff">Portal önizlemesini aç</span>
+        </div>
+      </a>
+      <a class="urun" href="kurumsal.html#egitim">
+        <img src="../assets/img/vardiya-brifing.jpg" alt="" loading="lazy">
+        <div class="ic">
+          <span class="kisa">e-PMS</span>
+          <h3>Personel yönetim sistemi</h3>
+          <p>Vardiya planı, puantaj, eğitim kayıtları ve ÖGKK bitiş tarihleri tek yerde. Kartı yaklaşan görevli otomatik olarak yenileme listesine girer.</p>
+          <span class="metin-link" style="color:#fff">Eğitim ve denetim düzeni</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="bolum-bas" style="margin-bottom:16px">
+      <div><h2 style="font-size:1.5rem">Sektöre göre süzün</h2></div>
+      <p id="sonucSay" class="kucuk" aria-live="polite">17 hizmet</p>
+    </div>
+    <div class="cipler" id="sektorCip" role="group" aria-label="Sektör süzgeci">
+      <button class="cip" type="button" data-s="tum" aria-pressed="true">Tümü</button>
+      <button class="cip" type="button" data-s="konut" aria-pressed="false">Konut</button>
+      <button class="cip" type="button" data-s="sanayi" aria-pressed="false">Sanayi</button>
+      <button class="cip" type="button" data-s="saglik" aria-pressed="false">Sağlık</button>
+      <button class="cip" type="button" data-s="perakende" aria-pressed="false">Perakende ve plaza</button>
+      <button class="cip" type="button" data-s="etkinlik" aria-pressed="false">Etkinlik</button>
+      <button class="cip" type="button" data-s="deniz" aria-pressed="false">Deniz ve liman</button>
+      <button class="cip" type="button" data-s="maden" aria-pressed="false">Maden</button>
+      <button class="cip" type="button" data-s="ozel" aria-pressed="false">Özel koruma</button>
+    </div>
+    <div class="hizmet-izgara" id="tumHizmetler"></div>
+    <p class="bos-sonuc" id="bosSonuc">Bu sektörde listelenmiş hizmet yok. Asistana yazın, bölge müdürlüğümüz size dönsün.</p>
+
+    <div class="grup-band">
+      <div>
+        <h2 style="font-size:1.4rem">Ress Group hizmetleri</h2>
+        <p class="ikincil" style="margin:0">Güvenliği aynı çatı altındaki tesis hizmetleriyle tek sözleşmede birleştirebilirsiniz.</p>
+      </div>
+      <div>
+        <ul class="grup-liste">
+          <li>Entegre tesis yönetimi</li><li>Profesyonel temizlik</li><li>Teknik bakım</li><li>Bahçe ve peyzaj</li><li>Haşere kontrol</li><li>Temizlik makineleri</li>
+        </ul>
+        <p style="margin:14px 0 0"><a class="metin-link" href="https://www.ressgroup.com.tr" rel="noopener">ressgroup.com.tr’de incele</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="alt"></footer>
+<script src="app.js"></script>
+</body>
+</html>

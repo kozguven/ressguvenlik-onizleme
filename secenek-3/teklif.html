@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Teklif Sihirbazı | RESS Koruma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sayfa="teklif">
+<header id="ust"></header>
+<main>
+<section class="sayfa-bas">
+  <div class="kap">
+    <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>Teklif sihirbazı</li></ol>
+    <h1>Kaç görevliye ihtiyacınız var?</h1>
+    <p>Beş soruyu cevaplayın, önerilen kadroyu görün. Fiyatı keşiften sonra bölge müdürlüğümüz verir.</p>
+  </div>
+</section>
+
+<section class="bolum" style="padding-top:28px">
+  <div class="kap sihirbaz">
+    <div class="kart" id="sihirbaz">
+      <div class="ilerleme" id="ilerleme" aria-hidden="true"></div>
+      <p class="ilerleme-yazi" id="ilerlemeYazi" aria-live="polite"></p>
+
+      <div class="adim" data-ad="Tesis türü">
+        <h2>Hangi tesis için?</h2>
+        <fieldset><legend class="gizli">Tesis türü</legend>
+        <div class="secim-kart-grup">
+          <label class="secim-kart"><input type="radio" name="tesis" value="fabrika" data-ad="Fabrika / sanayi"><span><span data-ik="fabrika"></span>Fabrika ve sanayi tesisi</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="site" data-ad="Site / rezidans"><span><span data-ik="ev"></span>Site ve rezidans</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="hastane" data-ad="Hastane"><span><span data-ik="hastane"></span>Hastane ve sağlık tesisi</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="avm" data-ad="AVM / mağaza"><span><span data-ik="magaza"></span>AVM ve mağaza</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="plaza" data-ad="Plaza / iş merkezi"><span><span data-ik="bina"></span>Plaza ve iş merkezi</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="etkinlik" data-ad="Etkinlik"><span><span data-ik="ekip"></span>Etkinlik ve organizasyon</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="marina" data-ad="Marina / liman"><span><span data-ik="dalga"></span>Marina ve liman</span></label>
+          <label class="secim-kart"><input type="radio" name="tesis" value="diger" data-ad="Diğer"><span><span data-ik="kalkan"></span>Başka bir tesis</span></label>
+        </div>
+        </fieldset>
+      </div>
+
+      <div class="adim" data-ad="Konum">
+        <h2>Tesis nerede?</h2>
+        <p class="ikincil">İl bilgisi talebinizi doğru bölge müdürlüğüne yönlendirir.</p>
+        <div class="form-izgara">
+          <div class="alan"><label for="il">İl</label>
+            <select id="il"><option value="">Seçin</option><option>İstanbul</option><option>Kocaeli</option><option>Bursa</option><option>Ankara</option><option>İzmir</option><option>Antalya</option><option>Adana</option><option>Gaziantep</option><option>Ordu</option><option>Diğer</option></select></div>
+          <div class="alan"><label for="ilce">İlçe</label><input type="text" id="ilce" placeholder="Örn. Gebze" autocomplete="address-level2"></div>
+        </div>
+      </div>
+
+      <div class="adim" data-ad="Nokta ve saatler">
+        <h2>Kaç noktada, hangi saatlerde?</h2>
+        <div class="alan"><span id="noktaEt" style="font-weight:600;font-size:.93rem">Görevli bulunacak nokta sayısı</span>
+          <span class="ipucu">Kapı, kantar, resepsiyon ya da devriye hattı birer noktadır.</span>
+          <div class="sayac" role="group" aria-labelledby="noktaEt">
+            <button type="button" data-sayac="-1" aria-label="Bir azalt">−</button>
+            <output id="noktaCikti" aria-live="polite">1</output>
+            <button type="button" data-sayac="1" aria-label="Bir artır">+</button>
+          </div>
+          <input type="hidden" id="noktaSay" value="1">
+        </div>
+        <fieldset class="alan"><legend>Çalışma saatleri</legend>
+          <div class="secim-grup">
+            <label class="secim"><input type="radio" name="saat" value="7/24" checked><span>7/24</span></label>
+            <label class="secim"><input type="radio" name="saat" value="gunduz"><span>Gündüz, 08–20</span></label>
+            <label class="secim"><input type="radio" name="saat" value="gece"><span>Gece, 20–08</span></label>
+            <label class="secim"><input type="radio" name="saat" value="haftasonu"><span>Yalnız hafta sonu</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="alan"><legend>Görevli yetkisi</legend>
+          <div class="secim-grup">
+            <label class="secim"><input type="radio" name="yetki" value="silahsiz" checked><span>Silahsız</span></label>
+            <label class="secim"><input type="radio" name="yetki" value="silahli"><span>Silahlı</span></label>
+          </div>
+          <span class="ipucu">Silahlı görev için risk analizi ve valilik izni gerekir; keşifte birlikte değerlendiririz.</span>
+        </fieldset>
+      </div>
+
+      <div class="adim" data-ad="Ek ihtiyaçlar">
+        <h2>Ek ihtiyaçlar</h2>
+        <p class="ikincil">Birden fazla seçebilirsiniz. Hiçbiri gerekmiyorsa devam edin.</p>
+        <div class="secim-kart-grup">
+          <label class="secim-kart"><input type="checkbox" name="ek" value="k9" data-ad="K9 köpekli ekip"><span><span data-ik="kopek"></span>K9 köpekli ekip</span></label>
+          <label class="secim-kart"><input type="checkbox" name="ek" value="drone" data-ad="Drone ile gözetim"><span><span data-ik="drone"></span>Drone ile gözetim</span></label>
+          <label class="secim-kart"><input type="checkbox" name="ek" value="kamera" data-ad="Kamera izleme koordinasyonu"><span><span data-ik="kamera"></span>Kamera izleme koordinasyonu</span></label>
+          <label class="secim-kart"><input type="checkbox" name="ek" value="arac" data-ad="Devriye aracı"><span><span data-ik="arac"></span>Devriye aracı</span></label>
+        </div>
+      </div>
+
+      <div class="adim" data-ad="Önerilen kadro">
+        <h2>Önerilen kadro</h2>
+        <div class="kadro-sonuc" style="background:var(--bordo-acik)">
+          <strong class="veri" data-kadro>4,2 görevli</strong>
+          <span data-kadro-ac></span>
+        </div>
+        <h3>Hizmet modeli</h3>
+        <ul id="modelListe" style="padding-left:20px;margin:0 0 16px"></ul>
+        <div class="not-kutu"><strong>Fiyat neden yok?</strong>Fiyat; tesisin risk analizine, vardiya düzenine ve yasal ücret kalemlerine göre keşiften sonra yazılı olarak verilir. Bölge müdürlüğümüz keşif için sizi arar.</div>
+      </div>
+
+      <div class="adim" data-ad="İletişim bilgileri">
+        <h2>Size nasıl ulaşalım?</h2>
+        <form id="iletisimForm" onsubmit="return false">
+          <div class="form-izgara">
+            <div class="alan"><label for="tAd">Ad soyad</label><input type="text" id="tAd" required autocomplete="name"></div>
+            <div class="alan"><label for="tFirma">Firma / tesis adı</label><input type="text" id="tFirma" autocomplete="organization"></div>
+            <div class="alan"><label for="tTel">Telefon</label><input type="tel" id="tTel" required placeholder="05xx xxx xx xx" autocomplete="tel"></div>
+            <div class="alan"><label for="tEposta">E-posta</label><input type="email" id="tEposta" autocomplete="email"></div>
+          </div>
+          <label class="onay"><input type="checkbox" required> <span><a class="metin-link" href="iletisim.html#kvkk">KVKK aydınlatma metnini</a> okudum; teklif için benimle iletişime geçilmesini kabul ediyorum.</span></label>
+        </form>
+      </div>
+
+      <div class="adim gonderildi" data-ad="Gönderildi">
+        <div class="tik"><span data-ik="tik" data-sinif="ik-b"></span></div>
+        <h2>Talebiniz bölge müdürlüğümüze ulaştı</h2>
+        <p>Talep numaranız <strong class="veri" id="talepNo">RS-2026-0000</strong>. Bölge müdürlüğümüz keşif randevusu için sizi arar. Bu numarayla asistana ya da 0850 888 73 77’ye talebinizin durumunu sorabilirsiniz.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="dug dug-bordo" href="index.html">Ana sayfaya dön</a><a class="dug dug-cizgi" href="musteri-portali.html">Müşteri portalını incele</a></div>
+      </div>
+
+      <div class="sih-alt" id="sihAlt">
+        <button class="dug dug-cizgi" type="button" id="geriDug">Geri</button>
+        <button class="dug dug-bordo" type="button" id="ileriDug">Devam et</button>
+      </div>
+    </div>
+
+    <aside class="kart ozet" aria-label="Talep özeti">
+      <h3><span data-ik="belge"></span>Talep özeti</h3>
+      <dl>
+        <div><dt>Tesis</dt><dd data-oz="tesis">Seçilmedi</dd></div>
+        <div><dt>Konum</dt><dd data-oz="konum">Seçilmedi</dd></div>
+        <div><dt>Nokta ve saat</dt><dd data-oz="nokta">1 nokta, 7/24</dd></div>
+        <div><dt>Yetki</dt><dd data-oz="yetki">Silahsız</dd></div>
+        <div><dt>Ek ihtiyaç</dt><dd data-oz="ek">Yok</dd></div>
+      </dl>
+      <div class="kadro-sonuc">
+        <span>Önerilen kadro</span>
+        <strong class="veri" data-kadro>4,2 görevli</strong>
+        <span data-kadro-ac></span>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer id="alt"></footer>
+<script src="app.js"></script>
+</body>
+</html>

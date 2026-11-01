@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RESS web sitesi — ön tasarım rehberi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1C2024;--muted:#545C66;--line:#E3E6EA;--bg:#FFFFFF;--soft:#F4F5F7;--accent:#801618}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Public Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px;font-size:14px;color:var(--muted)}
+header img{height:30px;width:auto;display:block}
+.intro{padding:44px 0 26px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.12;font-weight:800;letter-spacing:-.02em;max-width:20ch}
+.intro p{margin-top:16px;max-width:64ch;color:var(--muted);font-size:18px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:18px 0 40px}
+.opt{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.opt .shot{display:block;aspect-ratio:3/4;overflow:hidden;background:var(--soft);border-bottom:1px solid var(--line)}
+.opt .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.opt .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.opt h2{font-size:22px;line-height:1.2}
+.opt h2 small{display:block;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.opt p{color:var(--muted);font-size:15.5px}
+.sw{display:flex;gap:6px;margin-top:2px}
+.sw i{width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:block}
+.btn{display:flex;justify-content:center;align-items:center;min-height:48px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;margin-top:auto}
+.btn:hover{background:#000}
+.screens{font-size:14px;display:flex;flex-wrap:wrap;gap:6px}
+.screens a{padding:8px 11px;border:1px solid var(--line);border-radius:20px;text-decoration:none;color:var(--muted)}
+.screens a:hover{border-color:var(--ink);color:var(--ink)}
+section.block{padding:36px 0;border-top:1px solid var(--line)}
+section.block h2{font-size:26px;margin-bottom:14px;line-height:1.25}
+.lead{max-width:68ch;color:var(--muted);margin-bottom:18px}
+.diff{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;max-width:980px}
+.diff div{padding:14px 0;border-top:1px solid var(--line)}
+.diff b{display:block;margin-bottom:4px}
+.diff span{color:var(--muted);font-size:16px}
+ol.steps{padding-left:22px;display:grid;gap:10px;max-width:70ch}
+ol.steps li::marker{font-weight:800;color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.note{background:var(--soft);border-radius:12px;padding:18px 20px;color:var(--ink);font-size:16px}
+.note ul{padding-left:20px;display:grid;gap:6px;margin-top:8px;color:var(--muted)}
+.pdf{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:10px;border:2px solid var(--ink);text-decoration:none;font-weight:700;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:14px}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media (max-width:900px){.opts{grid-template-columns:1fr}.opt .shot{aspect-ratio:4/3}.two,.diff{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><img src="assets/logo/ress-koruma-logo-acik-zemin.png" alt="RESS Security Service"><span>Web sitesi ön tasarımı, hazırlayan Webizmo</span></div></header>
+<main class="wrap">
+  <div class="intro">
+    <h1>ressguvenlik.com için üç yeni yüz</h1>
+    <p>Sayım Bey, mevcut sitenizi, kataloglarınızı ve Ress Group'un kurumsal tanıtım metnini inceleyerek üç farklı web sitesi önerisi hazırladık. Her biri aynı on bir ekrandan oluşuyor: ana sayfa, hizmetler, hizmet detayı, kurumsal, referanslar, bölge müdürlükleri, teklif sihirbazı, kariyer, iletişim, müşteri portalı ve telefon görünümü. Hepsi tıklanabilir; telefonunuzdan da bilgisayarınızdan da gezebilirsiniz.</p>
+  </div>
+
+  <div class="opts">
+    <article class="opt">
+      <a class="shot" href="secenek-1/index.html"><img src="thumbs/secenek-1.jpg" alt="Seçenek 1 ana sayfa görünümü"></a>
+      <div class="body">
+        <h2><small>Seçenek 1</small>Gece Nöbeti</h2>
+        <p data-ozet="1">Sinematik ve koyu bir site. Açılışta yağmurlu bir gecede plaza girişinde nöbet tutan görevli; ana sayfadaki 24 saatlik nöbet çizelgesi, siz uyurken tesisinizde saat saat ne yapıldığını anlatıyor.</p>
+        <div class="sw" aria-label="Renkler"><i style="background:#0F0E0E"></i><i style="background:#801618"></i><i style="background:#C2343A"></i><i style="background:#EDE8E3"></i></div>
+        <div class="screens"><a href="secenek-1/hizmet-detay.html">Hizmet detayı</a><a href="secenek-1/teklif.html">Teklif sihirbazı</a><a href="secenek-1/musteri-portali.html">Müşteri portalı</a><a href="secenek-1/mobil.html">Telefonda</a></div>
+        <a class="btn" href="secenek-1/index.html">Seçenek 1'i incele</a>
+      </div>
+    </article>
+    <article class="opt">
+      <a class="shot" href="secenek-2/index.html"><img src="thumbs/secenek-2.jpg" alt="Seçenek 2 ana sayfa görünümü"></a>
+      <div class="body">
+        <h2><small>Seçenek 2</small>Kurumsal Dosya</h2>
+        <p data-ozet="2">Açık zeminli, ciddi ve bilgi dolu bir kurumsal site. Satınalma ve tesis müdürünün sorduğu her soruya cevap veriyor; ana sayfadaki hesaplayıcı tesis için kaç görevli gerektiğini anında gösteriyor, harita sekiz bölge müdürlüğünü tek bakışta sunuyor.</p>
+        <div class="sw" aria-label="Renkler"><i style="background:#FFFFFF"></i><i style="background:#F2F3F4"></i><i style="background:#211F20"></i><i style="background:#801618"></i></div>
+        <div class="screens"><a href="secenek-2/hizmet-detay.html">Hizmet detayı</a><a href="secenek-2/bolgeler.html">Bölge haritası</a><a href="secenek-2/teklif.html">Teklif sihirbazı</a><a href="secenek-2/mobil.html">Telefonda</a></div>
+        <a class="btn" href="secenek-2/index.html">Seçenek 2'yi incele</a>
+      </div>
+    </article>
+    <article class="opt">
+      <a class="shot" href="secenek-3/index.html"><img src="thumbs/secenek-3.jpg" alt="Seçenek 3 ana sayfa görünümü"></a>
+      <div class="body">
+        <h2><small>Seçenek 3</small>Dijital Nöbet</h2>
+        <p data-ozet="3">Teknolojiyle güvenlik veren firma görünümü. Site, ziyaretçiyi Ress'in dijital asistanıyla karşılıyor; hemen altında müşterinizin her sabah telefonunda gördüğü nöbet raporu var. Telefonda bir uygulama gibi çalışıyor.</p>
+        <div class="sw" aria-label="Renkler"><i style="background:#F6F7F9"></i><i style="background:#121417"></i><i style="background:#801618"></i><i style="background:#2F8F5E"></i></div>
+        <div class="screens"><a href="secenek-3/musteri-portali.html">Müşteri portalı</a><a href="secenek-3/teklif.html">Teklif sihirbazı</a><a href="secenek-3/kariyer.html">Kariyer</a><a href="secenek-3/mobil.html">Telefonda</a></div>
+        <a class="btn" href="secenek-3/index.html">Seçenek 3'ü incele</a>
+      </div>
+    </article>
+  </div>
+
+  <section class="block">
+    <h2>Üç seçenekte de ortak olanlar</h2>
+    <p class="lead">Hangi görünümü seçerseniz seçin, yeni sitede şunlar hazır geliyor:</p>
+    <div class="diff">
+      <div><b>Markanızın kendi renkleri</b><span>Logonuzdaki bordo ve antrasit, kataloglarınızla aynı görsel dil. Sitenin her köşesinde RESS'i hatırlatan tutarlı bir kimlik.</span></div>
+      <div><b>Güncel ve tek iletişim bilgisi</b><span>0850 888 73 77, Esenyurt Sedai Plaza'daki genel müdürlük ve tek e-posta adresi her sayfada aynı.</span></div>
+      <div><b>Sahadan fotoğraf ve videolar</b><span>İstanbul'da ve Türkiye'de geçen gece plazası, şafakta vardiya brifingi, operasyon merkezi, liman, maden ve hastane sahneleri.</span></div>
+      <div><b>Teklif getiren sihirbaz</b><span>Ziyaretçi tesis türünü, nokta sayısını ve çalışma saatlerini seçiyor; site önerilen kadroyu gösterip talebi bölge müdürlüğünüze iletiyor.</span></div>
+      <div><b>Müşteri portalı</b><span>e-PMS ve Ress Dijital Nöbet hizmetlerinizin müşterinin göreceği yüzü: vardiya durumu, devriye turu, olay kayıtları, aylık rapor.</span></div>
+      <div><b>Dijital asistan</b><span>Ress Group'un hazırladığı kurumsal tanıtım metnine göre konuşan asistan; teklif, iş başvurusu ve şikâyetleri kayıt altına alıp ilgili birime yönlendiriyor.</span></div>
+      <div><b>Bölge müdürlükleri haritası</b><span>Sekiz bölge müdürlüğü ve genel müdürlük Türkiye haritasında; ziyaretçi kendine en yakın birimi tek dokunuşla buluyor.</span></div>
+      <div><b>Arama motoruna hazır yapı</b><span>Her sayfanın içeriği Google'ın doğrudan okuyabileceği şekilde sayfada hazır; hizmet ve bölge sayfaları ayrı ayrı bulunabilir.</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Nasıl inceleyebilirsiniz?</h2>
+    <div class="two">
+      <ol class="steps">
+        <li>Bir seçeneğin ana sayfasını açın; menüden, hizmet kartlarından ve "Teklif al" düğmelerinden gezin.</li>
+        <li>Her sayfanın sol altındaki <b>Ekranlar</b> düğmesi o seçeneğin on bir ekranını listeler.</li>
+        <li>Teklif sihirbazını ve sağ alttaki dijital asistanı deneyin; seçimlerinize göre cevap veriyorlar.</li>
+        <li>Aynı ekranı üç seçenekte karşılaştırın; örneğin üçünün de müşteri portalına bakın.</li>
+        <li>Mümkünse hem telefondan hem bilgisayardan bakın.</li>
+      </ol>
+      <div class="note">
+        <b>Görüşünüzü nasıl iletebilirsiniz?</b>
+        <ul>
+          <li>WhatsApp'tan seçenek numarasını yazmanız yeterli: "Seçenek 2".</li>
+          <li>Karma da olur: "1'in açılış videosu, 2'nin hesaplayıcısı".</li>
+          <li>Bir ekranda değişmesini istediğiniz şeyi ekran adıyla yazın: "Kariyer sayfasında maaş bilgisi de olsun".</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Telefon görünümü, tek dosyada</h2>
+    <p class="lead">Ziyaretçilerinizin çoğu siteyi telefondan açacak. Üç seçeneğin telefon ekranlarını (açılış, menü, hizmet detayı, teklif sihirbazı, asistan, kariyer başvurusu, müşteri portalı) tek bir PDF'te topladık.</p>
+    <a class="pdf" href="RESS-Web-Sitesi-On-Tasarim.pdf">Ön tasarım PDF'ini aç</a>
+  </section>
+
+  <section class="block">
+    <div class="note">
+      <b>Bilmeniz gerekenler</b>
+      <ul>
+        <li>Bu bir ön tasarımdır: ekranlar tıklanabilir, formlar ve asistan örnek akışla çalışır; gerçek kayıt oluşturmaz.</li>
+        <li>Fotoğraflar ve videolar temsilidir, yapay zekâ ile üretildi. İsterseniz kendi ekiplerinizin çekimleriyle değiştiririz.</li>
+        <li>Rakamlar (personel, müşteri, il sayısı) ve referans yorumları mevcut sitenizden alındı; yayından önce sizinle teyit edilir. Müşteri portalındaki tesis ve görevli adları örnektir.</li>
+        <li>Bu adres geçicidir ve arama motorlarına kapalıdır; seçiminizden sonra kaldırılacaktır.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Ön tasarım, Kasım 2026. Webizmo (webizmo.tr), 0533 817 42 27</div></footer>
+</body>
+</html>

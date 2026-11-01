@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Müşteri Portalı | RESS Koruma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sayfa="portal">
+<header id="ust"></header>
+<main>
+<section class="sayfa-bas">
+  <div class="kap giris-kap">
+    <div class="kart" style="border-radius:24px">
+      <h1 style="font-size:1.8rem">Müşteri girişi</h1>
+      <p class="ikincil" style="margin-bottom:20px">Şifre yok. E-postanızı yazın, telefonunuza tek kullanımlık kod gönderelim.</p>
+      <div id="girisAdim1">
+        <div class="alan"><label for="girisEposta">Kurumsal e-posta</label><input type="email" id="girisEposta" required placeholder="ad.soyad@firmaniz.com.tr" autocomplete="email"></div>
+        <button class="dug dug-bordo dug-tam" type="button" id="kodGonder">SMS kodu gönder</button>
+      </div>
+      <div id="girisAdim2" hidden>
+        <p style="margin-bottom:12px">Kayıtlı telefonunuza (<span class="veri">05•• ••• •• 47</span>) 6 haneli kod gönderdik.</p>
+        <fieldset class="alan"><legend>Doğrulama kodu</legend>
+          <div class="kod-kutular">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="1. hane" autocomplete="one-time-code">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="2. hane">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="3. hane">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="4. hane">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="5. hane">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="6. hane">
+          </div>
+          <span class="ipucu">Kod 3 dakika geçerlidir.</span>
+        </fieldset>
+        <button class="dug dug-bordo dug-tam" type="button" id="girisYap">Giriş yap</button>
+        <button class="dug dug-cizgi dug-tam" type="button" id="geriEposta" style="margin-top:8px">E-postayı değiştir</button>
+      </div>
+      <p class="ikincil kucuk" style="margin:16px 0 0">Hesabınız yok mu? Portal erişimi sözleşmeyle birlikte hesap yöneticiniz tarafından açılır.</p>
+    </div>
+    <div>
+      <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>Müşteri portalı</li></ol>
+      <h2>Nöbetiniz, sahaya gitmeden önünüzde</h2>
+      <p class="ikincil">Ress Dijital Nöbet ve e-PMS sistemlerinin müşteriye açılan yüzü. Aynı ekran telefonda da çalışır.</p>
+      <ul class="hero-kanit" style="color:var(--metin);flex-direction:column;gap:10px">
+        <li><span data-ik="nfc"></span>Her kontrol noktası okutması saatiyle</li>
+        <li><span data-ik="bayrak"></span>Fotoğraflı olay tutanakları, kayıt numarasıyla</li>
+        <li><span data-ik="belge"></span>Aylık hizmet raporu, imzalı PDF</li>
+        <li><span data-ik="asistan"></span>Talep açma ve kapanana kadar izleme</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bolum" id="portalBolum" style="padding-top:40px">
+  <div class="kap">
+    <div class="bolum-bas" style="margin-bottom:18px">
+      <div><h2>Giriş yapıldıktan sonra</h2><p>Kurgusal tesis ve örnek veriyle hazırlanmış önizleme. Görevli adları kısaltılarak gösterilir.</p></div>
+      <span class="ornek-rozet">Örnek veri</span>
+    </div>
+
+    <div class="portal">
+      <div class="portal-ust">
+        <button class="tesis-sec" type="button"><span data-ik="fabrika"></span>Gebze Üretim Tesisi<span data-ik="asagi"></span></button>
+        <span class="durum d-tamam">3 noktada görevli var</span>
+        <div class="sag">
+          <span class="ikincil kucuk">Hesap yöneticiniz: Selin A.</span>
+          <span class="avatar" aria-label="Kullanıcı: Murat T.">MT</span>
+        </div>
+      </div>
+      <div class="portal-govde">
+        <div class="portal-nav" role="tablist" aria-label="Portal bölümleri">
+          <button role="tab" aria-selected="true" aria-controls="pBugun" tabindex="0"><span data-ik="ev"></span>Bugün</button>
+          <button role="tab" aria-selected="false" aria-controls="pDevriye" tabindex="-1"><span data-ik="nfc"></span>Devriye<span class="say">14/16</span></button>
+          <button role="tab" aria-selected="false" aria-controls="pOlay" tabindex="-1"><span data-ik="bayrak"></span>Olaylar<span class="say">3</span></button>
+          <button role="tab" aria-selected="false" aria-controls="pPersonel" tabindex="-1"><span data-ik="ekip"></span>Personel</button>
+          <button role="tab" aria-selected="false" aria-controls="pRapor" tabindex="-1"><span data-ik="rapor"></span>Raporlar</button>
+          <button role="tab" aria-selected="false" aria-controls="pTalep" tabindex="-1"><span data-ik="belge"></span>Talepler<span class="say">1</span></button>
+        </div>
+        <div class="portal-icerik">
+
+          <!-- Bugün -->
+          <div class="p-sekme aktif" id="pBugun" role="tabpanel">
+            <div class="p-baslik"><h2>Çarşamba, 28 Ekim 2026</h2><span class="ikincil kucuk">Son güncelleme <span class="veri">09:12</span></span></div>
+            <div class="nokta-kartlar">
+              <div class="nokta-kart"><h3>Ana kapı ve kantar</h3><span class="durum d-tamam">Vardiya devri tamam</span><p>Mehmet K., Ayşe D. <span class="veri">08:00–20:00</span></p></div>
+              <div class="nokta-kart"><h3>Sevkiyat kapısı</h3><span class="durum d-tamam">Vardiya devri tamam</span><p>Hasan Y. <span class="veri">08:00–20:00</span></p></div>
+              <div class="nokta-kart"><h3>Arka saha devriyesi</h3><span class="durum d-bekliyor">Gece başlar</span><p>Gece ekibi <span class="veri">20:00–08:00</span></p></div>
+            </div>
+            <div class="p-iki">
+              <div class="p-blok">
+                <h3>Gece devriyesi <strong class="veri">14/16</strong></h3>
+                <div class="noktalar" aria-label="16 kontrol noktasından 14’ü okundu" style="margin-bottom:12px">
+                  <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span>
+                  <span>09</span><span>10</span><span class="bek">11</span><span class="bek">12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                </div>
+                <p class="kucuk ikincil" style="margin:0">KN-11 ve KN-12 (otopark arka hat) yağmur nedeniyle sabah turuna aktarıldı, <span class="veri">10:00</span>’da okunacak.</p>
+              </div>
+              <div class="p-blok">
+                <h3>Son 24 saat</h3>
+                <ol class="akis">
+                  <li><time class="veri">08:00</time><div><h4>Vardiya devri</h4><p>3 noktada imzalı devir.</p></div></li>
+                  <li><time class="veri">05:40</time><div><h4>Devriye turu bitti</h4><p>14 nokta okundu, 2 nokta sabaha aktarıldı.</p></div></li>
+                  <li><time class="veri">02:10</time><div><h4>Arka kapı açık bulundu</h4><p>Kapatıldı, fotoğraflı tutanak <span class="veri">OLY-2026-0318</span>.</p><span class="durum d-olay">Olay kaydı</span></div></li>
+                </ol>
+              </div>
+            </div>
+            <div class="p-blok" style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+              <div><h3 style="margin:0 0 2px">Ekim 2026 hizmet raporu hazır</h3><p class="ikincil kucuk" style="margin:0">31 vardiya devri, 496 devriye turu, 3 olay kaydı, 1 açık talep.</p></div>
+              <button class="dug dug-bordo" type="button" data-indir>Raporu indir (PDF)</button>
+            </div>
+          </div>
+
+          <!-- Devriye -->
+          <div class="p-sekme" id="pDevriye" role="tabpanel">
+            <div class="p-baslik"><h2>Gece devriyesi, 27–28 Ekim</h2><span class="durum d-bekliyor">2 nokta bekliyor</span></div>
+            <div class="p-blok">
+              <ul class="kn-liste">
+                <li><span class="veri">KN-01</span><span>Ana kapı bariyeri</span><span class="veri">23:04</span></li>
+                <li><span class="veri">KN-02</span><span>Kantar kulübesi</span><span class="veri">23:09</span></li>
+                <li><span class="veri">KN-03</span><span>İdari bina girişi</span><span class="veri">23:15</span></li>
+                <li><span class="veri">KN-04</span><span>Depo kapısı</span><span class="veri">23:22</span></li>
+                <li><span class="veri">KN-05</span><span>Hammadde sahası</span><span class="veri">23:30</span></li>
+                <li><span class="veri">KN-06</span><span>Jeneratör odası</span><span class="veri">23:37</span></li>
+                <li><span class="veri">KN-07</span><span>Doğu tel örgü hattı</span><span class="veri">23:46</span></li>
+                <li><span class="veri">KN-08</span><span>Atık sahası</span><span class="veri">23:55</span></li>
+                <li><span class="veri">KN-09</span><span>Arka kapı</span><span class="veri">02:10</span></li>
+                <li><span class="veri">KN-10</span><span>Batı tel örgü hattı</span><span class="veri">02:24</span></li>
+                <li><span class="veri">KN-11</span><span>Otopark arka hat</span><span class="durum d-bekliyor">Sabaha aktarıldı</span></li>
+                <li><span class="veri">KN-12</span><span>Otopark aydınlatma direği</span><span class="durum d-bekliyor">Sabaha aktarıldı</span></li>
+                <li><span class="veri">KN-13</span><span>Sevkiyat rampası</span><span class="veri">04:58</span></li>
+                <li><span class="veri">KN-14</span><span>Yangın dolabı, üretim</span><span class="veri">05:12</span></li>
+                <li><span class="veri">KN-15</span><span>Personel girişi</span><span class="veri">05:28</span></li>
+                <li><span class="veri">KN-16</span><span>Ana kapı, tur sonu</span><span class="veri">05:40</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Olaylar -->
+          <div class="p-sekme" id="pOlay" role="tabpanel">
+            <div class="p-baslik"><h2>Olay kayıtları, Ekim 2026</h2><span class="ikincil kucuk">3 kayıt</span></div>
+            <article class="p-blok" style="margin-bottom:12px">
+              <div class="olay-detay">
+                <img src="../assets/img/fabrika-guvenlik.jpg" alt="Olay tutanağına eklenen fotoğraf: tesis arka kapısı">
+                <div>
+                  <h3 style="justify-content:flex-start;gap:10px">Arka kapı açık bulundu <span class="durum d-olay">Olay</span></h3>
+                  <p class="kucuk ikincil" style="margin:0 0 8px"><span class="veri">OLY-2026-0318</span>, 28 Ekim <span class="veri">02:10</span>, KN-09</p>
+                  <p style="margin:0 0 8px">Devriyedeki görevli Mehmet K. arka kapının kilitsiz ve aralık olduğunu tespit etti. Çevrede kimse görülmedi, iz yok. Kapı kilitlendi, fotoğraf eklendi, vardiya amirine <span class="veri">02:14</span>’te bildirildi.</p>
+                  <p class="kucuk" style="margin:0"><strong>Öneri:</strong> Kapıya kapanma sensörü takılması. Hesap yöneticiniz bu hafta arayacak.</p>
+                </div>
+              </div>
+            </article>
+            <div class="p-blok">
+              <div class="talep-satir"><div><strong>Kantar bariyeri arızası</strong><p><span class="veri">OLY-2026-0291</span>, 17 Ekim <span class="veri">14:35</span>. Teknik ekibe iletildi, aynı gün onarıldı.</p></div><span class="durum d-tamam">Kapandı</span></div>
+              <div class="talep-satir"><div><strong>Sahipsiz palet, depo önü</strong><p><span class="veri">OLY-2026-0264</span>, 9 Ekim <span class="veri">22:30</span>. Sevkiyat sorumlusu kaldırttı.</p></div><span class="durum d-tamam">Kapandı</span></div>
+            </div>
+          </div>
+
+          <!-- Personel -->
+          <div class="p-sekme" id="pPersonel" role="tabpanel">
+            <div class="p-baslik"><h2>Tesisteki ekip</h2><span class="ikincil kucuk">12 kişi, e-PMS kaydından</span></div>
+            <div class="tablo-sar">
+              <table>
+                <thead><tr><th scope="col">Görevli</th><th scope="col">Görev</th><th scope="col">Vardiya</th><th scope="col">ÖGKK bitiş</th></tr></thead>
+                <tbody>
+                  <tr><td>Mehmet K.</td><td>Görevli, silahsız</td><td>Gündüz</td><td class="veri">03.2029</td></tr>
+                  <tr><td>Ayşe D.</td><td>Görevli, silahsız</td><td>Gündüz</td><td class="veri">11.2027</td></tr>
+                  <tr><td>Hasan Y.</td><td>Görevli, silahsız</td><td>Gündüz</td><td><span class="durum d-bekliyor">01.2027, yenileme</span></td></tr>
+                  <tr><td>Emre S.</td><td>Vardiya amiri</td><td>Gündüz</td><td class="veri">06.2028</td></tr>
+                  <tr><td>Serkan B.</td><td>Görevli, silahsız</td><td>Gece</td><td class="veri">09.2028</td></tr>
+                  <tr><td>Gökhan T.</td><td>Görevli, silahsız</td><td>Gece</td><td class="veri">02.2030</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="kucuk ikincil" style="margin-top:10px">Kartı 3 aydan kısa sürede bitecek görevli için yenileme eğitimi planlandı; yerine yedek görevli hazır.</p>
+          </div>
+
+          <!-- Raporlar -->
+          <div class="p-sekme" id="pRapor" role="tabpanel">
+            <div class="p-baslik"><h2>Aylık hizmet raporları</h2></div>
+            <div style="display:grid;gap:10px">
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ekim 2026</strong><small>31 vardiya, 496 devriye, 3 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Eylül 2026</strong><small>30 vardiya, 480 devriye, 1 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+              <div class="rapor-satir"><span class="dosya"><span data-ik="belge"></span></span><span style="flex:1"><strong>Ağustos 2026</strong><small>31 vardiya, 494 devriye, 2 olay. İmzalı PDF.</small></span><button class="dug dug-cizgi" type="button" data-indir><span data-ik="indir"></span>İndir</button></div>
+            </div>
+          </div>
+
+          <!-- Talepler -->
+          <div class="p-sekme" id="pTalep" role="tabpanel">
+            <div class="p-baslik"><h2>Talepler</h2><button class="dug dug-bordo" type="button" data-talep-ac><span data-ik="arti"></span>Talep aç</button></div>
+            <div class="p-blok" id="talepListe">
+              <div class="talep-satir"><div><strong>Otopark aydınlatması yetersiz</strong><p><span class="veri">#TLP-2026-0412</span>, 26 Ekim. Teknik bakım keşfi planlandı.</p></div><span class="durum d-bekliyor">İşlemde</span></div>
+              <div class="talep-satir"><div><strong>Bayram vardiyasına ek görevli</strong><p><span class="veri">#TLP-2026-0377</span>, 2 Ekim. 2 görevli eklendi.</p></div><span class="durum d-tamam">Kapandı</span></div>
+              <div class="talep-satir"><div><strong>Ziyaretçi kartı tasarımı</strong><p><span class="veri">#TLP-2026-0349</span>, 21 Eylül. Yeni kartlar teslim edildi.</p></div><span class="durum d-tamam">Kapandı</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="ikincil kucuk vitrin-not"><span data-ik="kilit"></span>Gerçek portalda her müşteri yalnız kendi tesislerini görür; giriş kayıtları tutulur.</p>
+  </div>
+</section>
+
+<dialog class="dialog" id="talepDlg" aria-labelledby="talepDlgB">
+  <form method="dialog">
+    <h2 id="talepDlgB" style="font-size:1.4rem">Yeni talep</h2>
+    <div class="alan"><label for="talepKonu">Konu</label><input type="text" id="talepKonu" required placeholder="Örn. Hafta sonu ek görevli"></div>
+    <div class="alan"><label for="talepAcik">Açıklama</label><textarea id="talepAcik"></textarea></div>
+    <div class="alan"><label for="talepOn">Öncelik</label><select id="talepOn"><option>Normal</option><option>Acil</option></select></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end"><button class="dug dug-cizgi" type="button" data-kapat>Vazgeç</button><button class="dug dug-bordo" type="submit">Talebi aç</button></div>
+  </form>
+</dialog>
+</main>
+<footer id="alt"></footer>
+<script src="app.js"></script>
+</body>
+</html>

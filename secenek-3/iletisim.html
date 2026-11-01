@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>İletişim | RESS Koruma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sayfa="iletisim">
+<header id="ust"></header>
+<main>
+<section class="sayfa-bas">
+  <div class="kap">
+    <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>İletişim</li></ol>
+    <h1>Bize ulaşın</h1>
+    <p>Tüm bölgeler için tek numara. Mesai dışında operasyon merkezimiz cevap verir.</p>
+  </div>
+</section>
+
+<section class="bolum" style="padding-top:32px">
+  <div class="kap ilet-izgara">
+    <div>
+      <ul class="ilet-kanal">
+        <li><a href="tel:+908508887377"><span class="ik-kut"><span data-ik="telefon"></span></span><span><strong>0850 888 73 77</strong><span>7/24, tüm bölgeler</span></span></a></li>
+        <li><a href="https://wa.me/908508887377" rel="noopener"><span class="ik-kut"><span data-ik="whatsapp"></span></span><span><strong>WhatsApp</strong><span>Mesai saatlerinde yazışma</span></span></a></li>
+        <li><a href="mailto:info@resyonetim.com.tr"><span class="ik-kut"><span data-ik="posta"></span></span><span><strong>info@resyonetim.com.tr</strong><span>Teklif ve kurumsal yazışma</span></span></a></li>
+        <li><div><span class="ik-kut"><span data-ik="konum"></span></span><span><strong>Genel Müdürlük</strong><span>Talatpaşa Mah. Pazaryolu Cad. No:2 Sedai Plaza Kat:7 Daire:73 Esenyurt / İstanbul</span></span></div></li>
+      </ul>
+      <div class="harita-cizim" role="img" aria-label="Genel müdürlük konumu: Esenyurt, Pazaryolu Caddesi üzerinde Sedai Plaza">
+        <svg viewBox="0 0 600 340" aria-hidden="true">
+          <rect width="600" height="340" fill="#EEF0F2"/>
+          <rect x="40" y="30" width="150" height="90" rx="10" fill="#E2E6E9"/>
+          <rect x="230" y="30" width="120" height="90" rx="10" fill="#E2E6E9"/>
+          <rect x="390" y="30" width="170" height="90" rx="10" fill="#DDE8DF"/>
+          <rect x="40" y="200" width="200" height="110" rx="10" fill="#E2E6E9"/>
+          <rect x="280" y="200" width="110" height="110" rx="10" fill="#E2E6E9"/>
+          <rect x="430" y="200" width="130" height="110" rx="10" fill="#E2E6E9"/>
+          <path d="M0 160H600" stroke="#fff" stroke-width="26"/>
+          <path d="M210 0V340" stroke="#fff" stroke-width="16"/>
+          <path d="M370 0V340" stroke="#fff" stroke-width="12"/>
+          <path d="M0 160H600" stroke="#D3D8DD" stroke-width="1" stroke-dasharray="10 8"/>
+          <text x="20" y="150" font-family="Red Hat Text, sans-serif" font-size="14" fill="#5E6670">Pazaryolu Cad.</text>
+          <text x="400" y="104" font-family="Red Hat Text, sans-serif" font-size="13" fill="#4C6B55">Park</text>
+          <g transform="translate(300 128)">
+            <path d="M0 0c-14-18-22-28-22-40a22 22 0 0 1 44 0c0 12-8 22-22 40z" fill="#801618"/>
+            <circle cx="0" cy="-40" r="8" fill="#fff"/>
+          </g>
+          <rect x="250" y="176" width="100" height="30" rx="8" fill="#121417"/>
+          <text x="300" y="196" text-anchor="middle" font-family="Red Hat Display, sans-serif" font-weight="600" font-size="14" fill="#fff">Sedai Plaza</text>
+        </svg>
+      </div>
+      <p class="ikincil kucuk" style="margin-top:8px">Sadeleştirilmiş konum çizimi. Yol tarifi için <a class="metin-link" href="https://maps.google.com/?q=Sedai+Plaza+Esenyurt" rel="noopener">haritada aç</a>.</p>
+    </div>
+
+    <div class="kart">
+      <h2>Mesaj bırakın</h2>
+      <form data-gonder="MSJ">
+        <div class="alan"><label for="konu">Konu</label>
+          <select id="konu"><option value="teklif">Teklif</option><option value="sikayet">Şikâyet / öneri</option><option value="basvuru">İş başvurusu</option><option value="diger">Diğer</option></select></div>
+        <div class="form-izgara">
+          <div class="alan"><label for="iAd">Ad soyad</label><input type="text" id="iAd" required autocomplete="name"></div>
+          <div class="alan"><label for="iTel">Telefon</label><input type="tel" id="iTel" required autocomplete="tel"></div>
+        </div>
+        <div class="alan"><label for="iEposta">E-posta</label><input type="email" id="iEposta" autocomplete="email"></div>
+        <div class="alan"><label for="iMesaj">Mesajınız</label><textarea id="iMesaj" required></textarea></div>
+        <label class="onay" style="margin-bottom:18px"><input type="checkbox" required> <span>KVKK aydınlatma metnini okudum, mesajım için benimle iletişime geçilmesini kabul ediyorum.</span></label>
+        <button class="dug dug-bordo dug-tam" type="submit">Mesajı ilet</button>
+      </form>
+      <div data-sonuc hidden tabindex="-1">
+        <div class="gonderildi"><div class="tik"><span data-ik="tik" data-sinif="ik-b"></span></div></div>
+        <h3>Mesajınız iletildi</h3>
+        <p>Kayıt numaranız <strong class="veri">MSJ-2026-0000</strong>. Konuya göre ilgili birim sizi arar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bolum" style="padding-top:0">
+  <div class="kap">
+    <h2>Bölge müdürlükleri</h2>
+    <p class="ikincil">Her bölge aynı numaradan ulaşılır; talebiniz ilinize göre yönlenir.</p>
+    <div class="tablo-sar" style="margin-top:16px">
+      <table>
+        <thead><tr><th scope="col">Bölge</th><th scope="col">Merkez</th></tr></thead>
+        <tbody>
+          <tr><td>Genel Müdürlük</td><td>İstanbul, Esenyurt</td></tr>
+          <tr><td>Marmara</td><td>Kocaeli</td></tr>
+          <tr><td>İç Anadolu</td><td>Ankara</td></tr>
+          <tr><td>Karadeniz</td><td>Ordu</td></tr>
+          <tr><td>Ege</td><td>İzmir</td></tr>
+          <tr><td>Akdeniz</td><td>Adana</td></tr>
+          <tr><td>Antalya</td><td>Antalya</td></tr>
+          <tr><td>Güneydoğu Anadolu</td><td>Gaziantep</td></tr>
+          <tr><td>Doğu Anadolu</td><td>Ağrı, Doğubayazıt</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px"><a class="metin-link" href="bolgeler.html">Haritada gör</a></p>
+
+    <div class="not-kutu" id="kvkk" style="margin-top:40px">
+      <strong>KVKK aydınlatma metni (özet)</strong>
+      Formlarda paylaştığınız ad, telefon ve e-posta bilgileri yalnız talebinize cevap vermek için RESS Koruma ve Özel Güvenlik Hizmetleri Ltd. Şti. tarafından işlenir. Tam metin yayına çıkmadan önce hukuk biriminin onayıyla eklenecektir.
+    </div>
+  </div>
+</section>
+</main>
+<footer id="alt"></footer>
+<script src="app.js"></script>
+</body>
+</html>

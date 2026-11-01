@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bölge Müdürlükleri | RESS Koruma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sayfa="bolgeler">
+<header id="ust"></header>
+<main>
+<section class="sayfa-bas">
+  <div class="kap">
+    <ol class="yol"><li><a href="index.html">Ana sayfa</a></li><li>Bölge müdürlükleri</li></ol>
+    <h1>Size en yakın bölge müdürlüğü</h1>
+    <p>Genel müdürlük ve 8 bölge müdürlüğü. Haritada bir noktaya dokunun; sorumlu illeri görün.</p>
+  </div>
+</section>
+
+<section class="bolum" style="padding-top:32px">
+  <div class="kap">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <div class="gorunum-sec" id="gorunum" role="group" aria-label="Görünüm">
+        <button type="button" data-g="harita" aria-pressed="true">Harita</button>
+        <button type="button" data-g="liste" aria-pressed="false">Liste</button>
+      </div>
+      <span class="ornek-rozet" style="margin-bottom:16px">İl dağılımı önizleme içindir, teyit edilecek</span>
+    </div>
+    <div class="harita-kap" id="haritaGor">
+      <div class="harita" id="trHarita"></div>
+      <aside class="kart bolge-kart" id="bolgeKart" aria-live="polite"></aside>
+    </div>
+    <div class="bolge-liste" id="bolgeListe"></div>
+
+    <div class="iki-sutun" style="margin-top:48px">
+      <div>
+        <h2>Tek numara, doğru bölge</h2>
+        <p class="ikincil">0850 888 73 77’yi aradığınızda ya da asistana yazdığınızda talebiniz ilinize göre ilgili bölge müdürlüğüne yönlenir. Keşfi o bölgenin ekibi yapar, denetim de aynı ekipte kalır.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a class="dug dug-bordo" href="tel:+908508887377">0850 888 73 77’yi ara</a>
+          <button class="dug dug-cizgi" type="button" data-asistan-ac>Asistana sor</button>
+        </div>
+      </div>
+      <div class="foto-kare" style="aspect-ratio:16/9">
+        <img src="../assets/img/hesap-yoneticisi.jpg" alt="Ress hesap yöneticisi müşteriyle görüşüyor" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="alt"></footer>
+<script src="app.js"></script>
+</body>
+</html>
