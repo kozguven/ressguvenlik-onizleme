@@ -680,16 +680,13 @@ figure img,.tesis img,.hizmet img,.sayfa-bas>img,.grup-ic>img,.panorama img,.por
 .kanit-gorsel.canli{animation-duration:22s}
 @media (prefers-reduced-motion:reduce){.canli{animation:none}}
 
-/* 7/24 hat: 0850 888 RESS (müşteri isteği 02.11) */
-.acilis-tel{display:inline-flex;align-items:center;gap:16px;margin-top:32px;padding:14px 24px 14px 14px;background:var(--bordo);color:#fff;text-decoration:none;border-left:4px solid var(--bordo-acik);box-shadow:0 12px 32px rgba(0,0,0,.45);transition:background .2s}
+/* 7/24 hat: 0850 888 RESS (müşteri isteği 02.11; 18:08'de küçültüldü) */
+.acilis-tel{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:8px 16px 8px 8px;background:rgba(128,22,24,.88);color:#fff;text-decoration:none;border-left:3px solid var(--bordo-acik);transition:background .2s}
 .acilis-tel:hover{background:var(--bordo-koyu)}
-.acilis-tel-ikon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--bordo);flex:none;animation:tel-nabiz 2.4s ease-out infinite}
-.acilis-tel-ikon svg{width:26px;height:26px}
+.acilis-tel-ikon{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#fff;color:var(--bordo);flex:none}
+.acilis-tel-ikon svg{width:18px;height:18px}
 .acilis-tel-metin{display:flex;flex-direction:column;line-height:1.05}
-.acilis-tel-metin small{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#F3D9D9}
-.acilis-tel-metin small:last-child{text-transform:none;letter-spacing:.02em;margin-top:4px}
-.acilis-tel-metin strong{font-family:var(--baslik);font-weight:800;font-size:clamp(2.2rem,4.2vw,3.2rem);letter-spacing:.02em;color:#fff}
+.acilis-tel-metin small{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#F3D9D9}
+.acilis-tel-metin small:last-child{display:none}
+.acilis-tel-metin strong{font-family:var(--baslik);font-weight:800;font-size:1.55rem;letter-spacing:.02em;color:#fff}
 .acilis-tel-metin em{font-style:normal;background:#fff;color:var(--bordo);padding:0 .14em;margin-left:.06em}
-@keyframes tel-nabiz{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%{box-shadow:0 0 0 14px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
-@media (prefers-reduced-motion:reduce){.acilis-tel-ikon{animation:none}}
-@media (max-width:640px){.acilis-tel{gap:12px;padding:12px 18px 12px 12px}.acilis-tel-ikon{width:44px;height:44px}}
